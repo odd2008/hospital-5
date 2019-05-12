@@ -135,6 +135,12 @@
 				"navigationBarTitleText": "个人中心"
 			}
 		},
+		{
+			"path": "pages/user-info/user-basic-info",
+			"style": {
+				"navigationBarTitleText": "基本资料"
+			}
+		},
 		// 登录相关
 		{
 			"path": "pages/login/login",

@@ -7,31 +7,23 @@
 		</view>
 		
 		<view>
-			<view class="cu-form-group margin-top">
-				<view class="title">姓名</view>
-				<input v-model="basicInfo.name" name="input" disabled="true"></input>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">住院史</view>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.hospital" placeholder="请输入住院史信息"></textarea>
 			</view>
-			<view class="cu-form-group">
-				<view class="title">性别</view>
-				<input v-model="basicInfo.gender" name="input" disabled="true"></input>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">手术史</view>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.operation" placeholder="请输入手术史信息"></textarea>
 			</view>
-			<view class="cu-form-group">
-				<view class="title">年龄</view>
-				<input v-model="basicInfo.age" name="input" disabled="true"></input>
-			</view>
-			<view class="cu-form-group">
-				<view class="title">身高(cm)</view>
-				<input v-model="basicInfo.height" name="input" disabled="true"></input>
-			</view>
-			<view class="cu-form-group">
-				<view class="title">体重(kg)</view>
-				<input v-model="basicInfo.weight" name="input" disabled="true"></input>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">家族史</view>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.family" placeholder="请输入家族史信息"></textarea>
 			</view>
 		</view>
 		
 		<view class="cu-bar bg-white solid-bottom margin-top">
 			<view class="action">
-				<text class="cuIcon-titles text-orange"></text> 病史信息
+				<text class="cuIcon-titles text-orange"></text> 病史/报告
 			</view>
 		</view>
 		
@@ -58,11 +50,9 @@
 		data() {
 			return {
 				basicInfo: {
-					name: '张三',
-					gender: '男',
-					age: 20,
-					height: 183,
-					weight: 63					
+					hospital: '住院信息',
+					operation: '双眼皮手术',
+					family: '色盲'
 				},
 				sickInfo: [
 					{

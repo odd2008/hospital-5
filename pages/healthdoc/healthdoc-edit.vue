@@ -5,41 +5,24 @@
 				<text class="cuIcon-titles text-orange"></text> 基本信息
 			</view>
 		</view>
-		
 		<view>
-			<view class="cu-form-group margin-top">
-				<view class="title">姓名</view>
-				<input v-model="basicInfo.name" name="input"></input>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">住院史</view>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.hospital" @input="hospitalInput" placeholder="请输入住院史信息"></textarea>
 			</view>
-			<view class="cu-form-group">
-				<view class="title">性别</view>
-				<picker @change="genderChanged" :value="index" :range="genders">
-					<view class="picker">
-						{{index>-1?genders[index]:'请选择'}}
-					</view>
-				</picker>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">手术史</view>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.operation" @input="operationInput" placeholder="请输入手术史信息"></textarea>
 			</view>
-			<view class="cu-form-group">
-				<view class="title">出生日期</view>
-				<picker mode="date" :value="date" :start="dateRange.start" :end="dateRange.end" @change="DateChange">
-					<view class="picker">
-						{{date}}
-					</view>
-				</picker>
-			</view>
-			<view class="cu-form-group">
-				<view class="title">身高(cm)</view>
-				<input v-model="basicInfo.height" name="input" type="digit"></input>
-			</view>
-			<view class="cu-form-group">
-				<view class="title">体重(kg)</view>
-				<input v-model="basicInfo.weight" name="input" type="digit"></input>
+			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
+				<view class="title">家族史</view>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.family" @input="familyInput" placeholder="请输入家族史信息"></textarea>
 			</view>
 		</view>
 		
 		<view class="cu-bar bg-white solid-bottom margin-top">
 			<view class="action">
-				<text class="cuIcon-titles text-orange"></text> 病史信息
+				<text class="cuIcon-titles text-orange"></text> 病史/报告
 			</view>
 		</view>
 		
@@ -124,7 +107,10 @@
 					gender: '男',
 					age: 20,
 					height: 183,
-					weight: 63					
+					weight: 63,
+					hospital: '住院信息',
+					operation: '双眼皮手术',
+					family: '色盲'
 				},
 				index: 0,
 				genders: ['男', '女'],
@@ -257,8 +243,14 @@
 					}
 				});
 			},
-			remarkInput(e) {
-				this.remark = e.detail.value
+			hospitalInput(e) {
+				this.basicInfo.hospital = e.detail.value
+			},
+			operationInput(e) {
+				this.basicInfo.operation = e.detail.value
+			},
+			familyInput(e) {
+				this.basicInfo.family = e.detail.value
 			}
 		},
 		onNavigationBarButtonTap() {

@@ -5,17 +5,17 @@
 	font-style: normal;
 	src: url('https://at.alicdn.com/t/font_984210_5cs13ndgqsn.ttf') format('truetype');
 }
-page.data-v-e37c5132 {
+page.data-v-2b76f472 {
 	background-color: #f8f8f8;
 }
-.center.data-v-e37c5132 {
+.center.data-v-2b76f472 {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.logo.data-v-e37c5132 {
+.logo.data-v-2b76f472 {
 	width: 750rpx;
 	height: 300rpx;
 	padding: 20rpx;
@@ -38,30 +38,30 @@ page.data-v-e37c5132 {
 	display: -ms-flexbox;
 	display: flex;
 }
-.logo-hover.data-v-e37c5132 {
+.logo-hover.data-v-2b76f472 {
 	opacity: 0.8;
 }
-.logo-img.data-v-e37c5132 {
+.logo-img.data-v-2b76f472 {
 	width: 120rpx;
 	height: 120rpx;
 	border-radius: 150rpx;
 }
-.logo-title.data-v-e37c5132 { 
+.logo-title.data-v-2b76f472 { 
 	height: 60rpx;
 	display: block;
 	margin-left: 30rpx;
 }
-.uer-name.data-v-e37c5132 {
+.uer-name.data-v-2b76f472 {
 	height: 60rpx;
 	line-height: 60rpx;
 	font-size: 38rpx;
 	color: #FFFFFF;
 }
-.go-login.navigat-arrow.data-v-e37c5132 {
+.go-login.navigat-arrow.data-v-2b76f472 {
 	font-size: 38rpx;
 	color: #FFFFFF;
 }
-.center-list.data-v-e37c5132 {
+.center-list.data-v-2b76f472 {
 	background-color: #FFFFFF;
 	margin-top: 20rpx;
 	width: 750rpx;
@@ -71,7 +71,7 @@ page.data-v-e37c5132 {
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.center-list-item.data-v-e37c5132 {
+.center-list-item.data-v-2b76f472 {
 	height: 90rpx;
 	width: 750rpx;
 	-webkit-box-sizing: border-box;
@@ -83,12 +83,12 @@ page.data-v-e37c5132 {
 	        flex-direction: row;
 	padding: 0rpx 20rpx;
 }
-.border-bottom.data-v-e37c5132 {
+.border-bottom.data-v-2b76f472 {
 	border-bottom-width: 1rpx;
 	border-color: #c8c7cc;
 	border-bottom-style: solid;
 }
-.list-icon.data-v-e37c5132 {
+.list-icon.data-v-2b76f472 {
 	width: 40rpx;
 	height: 90rpx;
 	line-height: 90rpx;
@@ -98,7 +98,7 @@ page.data-v-e37c5132 {
 	font-family: texticons;
 	margin-right: 20rpx;
 }
-.list-text.data-v-e37c5132 {
+.list-text.data-v-2b76f472 {
 	height: 90rpx;
 	line-height: 90rpx;
 	font-size: 34rpx;
@@ -109,7 +109,7 @@ page.data-v-e37c5132 {
 	        flex: 1;
 	text-align: left;
 }
-.navigat-arrow.data-v-e37c5132 {
+.navigat-arrow.data-v-2b76f472 {
 	height: 90rpx;
 	width: 40rpx;
 	line-height: 90rpx;

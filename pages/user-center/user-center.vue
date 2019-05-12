@@ -8,9 +8,9 @@
 			</view>
 		</view>
 		<view class="center-list">
-			<view class="center-list-item border-bottom">
+			<view class="center-list-item border-bottom" @click="goBasicInfo">
 				<text class="list-icon">&#xe60f;</text>
-				<text class="list-text">帐号管理</text>
+				<text class="list-text">基本资料</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
 			<view class="center-list-item" @click="goAppointHistory">
@@ -80,6 +80,11 @@
 			goAppointHistory() {
 				uni.navigateTo({
 					url: '../appointment/appointment-history',
+				});
+			},
+			goBasicInfo() {
+				uni.navigateTo({
+					url: '../user-info/user-basic-info',
 				});
 			}
 		},

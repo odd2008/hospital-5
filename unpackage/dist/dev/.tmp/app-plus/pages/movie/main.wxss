@@ -59,17 +59,17 @@
 }
 
 
-navigator.data-v-26a25fa0 {
+navigator.data-v-419a3e90 {
   width: 100%;
 }
-.item.data-v-26a25fa0 {
+.item.data-v-419a3e90 {
   width: 100%;
   height: 170rpx;
 }
-.item.data-v-26a25fa0:nth-child(odd) {
+.item.data-v-419a3e90:nth-child(odd) {
   background-color: #e5e4df;
 }
-.item.data-v-26a25fa0:nth-child(even) {
+.item.data-v-419a3e90:nth-child(even) {
   background-color: #eae9e4;
 }
 
