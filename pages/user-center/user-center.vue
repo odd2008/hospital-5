@@ -3,11 +3,16 @@
 		<view class="logo" @click="goLogin" :hover-class="!login ? 'logo-hover' : ''">
 			<image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
 			<view class="logo-title">
-				<text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text>
+				<text class="uer-name">Hi，{{login ? uerInfo.name : '您尚未完善资料'}}</text>
 				<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
 			</view>
 		</view>
 		<view class="center-list">
+			<view class="center-list-item border-bottom" @click="goBasicInfo">
+				<text class="list-icon">&#xe60f;</text>
+				<text class="list-text">账户管理</text>
+				<text class="navigat-arrow">&#xe65e;</text>
+			</view>
 			<view class="center-list-item border-bottom" @click="goBasicInfo">
 				<text class="list-icon">&#xe60f;</text>
 				<text class="list-text">基本资料</text>
@@ -89,32 +94,7 @@
 			}
 		},
 		onLoad() {
-            if (!this.hasLogin) {
-                uni.showModal({
-                    title: '未登录',
-                    content: '您未登录，需要登录后才能继续',
-                    /**
-                     * 如果需要强制登录，不显示取消按钮
-                     */
-                    showCancel: !this.forcedLogin,
-                    success: (res) => {
-                        if (res.confirm) {
-							/**
-							 * 如果需要强制登录，使用reLaunch方式
-							 */
-                            if (this.forcedLogin) {
-                                uni.reLaunch({
-                                    url: '../login/login'
-                                });
-                            } else {
-                                uni.navigateTo({
-                                    url: '../login/login'
-                                });
-                            }
-                        }
-                    }
-                });
-            }
+			
         }
 	}
 </script>

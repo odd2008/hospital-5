@@ -58,23 +58,56 @@
 		            });
 		            return;
 		        }
+				
+				// request请求
 				uni.request({
-				    url: 'http://***/login.html',
-				    data: {
-						phoneno:this.phoneno,
+					url: 'http://192.168.43.135:8089/user/login',
+					method:'POST',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data:{
+						telephone:this.phoneno,
 						password:this.password
 					},
-					method: 'POST',
 					dataType:'json',
-				    success: (res) => {
-						if(res.data.code!=200){
-							uni.showToast({title:res.data.msg,icon:'none'});
+					success: (res) => {
+						console.log(JSON.stringify(res.data));
+						if(res.data.status==='success'){
+							//缓存jwt token，用于后续请求验证
+							uni.setStorage({
+								key: 'HOSPITAL_AUTHORIZATION',
+								data: res.data.data,
+								success: function () {
+									console.log('缓存成功');
+									//登录成功
+									uni.showToast({
+										title: '登录成功！',
+										duration: 1000
+									});
+									//跳转到主页
+									uni.switchTab({
+										url: '/pages/home/main'
+									});
+								}
+							});
 						}else{
-							uni.setStorageSync('user_data', JSON.stringify(res.data.data));
-							this.login();
-							uni.navigateBack();
+							uni.showToast({
+								title: res.data.errorMsg,
+								icon:'none',
+								duration: 2000
+							});
 						}
-				    }
+						
+					},
+					fail:(err)=>{
+						console.log('失败');
+						uni.showToast({
+							title: '网络错误，请重试！',
+							icon:'none',
+							duration: 2000
+						});
+					}
 				});
 				
 		    }

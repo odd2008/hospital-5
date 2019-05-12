@@ -44,19 +44,33 @@
 import { mapState, mapActions } from 'vuex'
 import weather from './weather'
 export default {
-  mounted() {
-    this.initPage()
-  },
-  components: {
-    weather
-  },
-  computed: {
-    ...mapState('home', ['data']),
-    ...mapState('weather', ['weather']),
-    content() {
-      return this.data.hp_content.split('by')[0]
-    }
-  },
+	onLoad() {
+		uni.getStorage({
+			key: 'HOSPITAL_AUTHORIZATION',
+			success: (res) => {
+			},
+			fail: (err) => {
+				console.log('授权码已清除，需要登录');
+				//需要登录，跳转到登录页
+				uni.reLaunch({
+					url: '/pages/login/login'
+				});
+			}
+		});
+	},
+	mounted() {
+		this.initPage()
+	},
+	components: {
+		weather
+	},
+	computed: {
+		...mapState('home', ['data']),
+		...mapState('weather', ['weather']),
+		content() {
+			return this.data.hp_content.split('by')[0]
+		}
+	},
 	data(){
 		return {
 			cardCur: 0,
