@@ -8,7 +8,7 @@
 					<view class="radius">
 						<view class="cu-tag shadow-blur" :class="'bg-'+colors[data.status]">{{statusInfo[data.status]}}</view>
 						
-						<view class="" style="float: right; font-size: 40upx;" @click="goComment">
+						<view class="" style="float: right; font-size: 40upx;" v-if="data.status === 1" @click="goComment">
 							<text class="cuIcon-comment text-grey"></text>
 						</view>
 					</view>

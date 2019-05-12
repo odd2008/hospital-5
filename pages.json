@@ -138,7 +138,21 @@
 		{
 			"path": "pages/user-info/user-basic-info",
 			"style": {
-				"navigationBarTitleText": "基本资料"
+				"navigationBarTitleText": "基本资料",
+				"app-plus": {
+				    "bounce": "none",
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "保存", 
+				                "fontSize":"16",
+				                "float": "right",
+				                "color": "#333333",
+								"width": "55px"
+				            }
+				        ]
+				    }
+				}
 			}
 		},
 		// 登录相关

@@ -1757,6 +1757,15 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_24)return __WXML_GLOBAL__.ops_cached.$gwx_24
 __WXML_GLOBAL__.ops_cached.$gwx_24=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'09e00cf0'])
+Z([3,'index1'])
+Z([3,'info'])
+Z([[7],[3,'appointInfos']])
+Z(z[1])
+Z([3,'index2'])
+Z([3,'data'])
+Z([[6],[[7],[3,'info']],[3,'data']])
+Z(z[5])
+Z([[2,'==='],[[6],[[7],[3,'data']],[3,'status']],[1,1]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_24);return __WXML_GLOBAL__.ops_cached.$gwx_24
 }
 function gz$gwx_25(){
@@ -5093,6 +5102,31 @@ gg.f=$gdc(f_["./pages/appointment/appointment-history.vue.wxml"],"",1)
 if(p_[b]){_wl(b,x[40]);return}
 p_[b]=true
 try{
+var oB=_v()
+_(r,oB)
+cs.push("./pages/appointment/appointment-history.vue.wxml:view:1:56")
+var xC=function(fE,oD,cF,gg){
+var oH=_v()
+_(cF,oH)
+cs.push("./pages/appointment/appointment-history.vue.wxml:view:1:261")
+var cI=function(lK,oJ,aL,gg){
+var eN=_v()
+_(aL,eN)
+if(_oz(z,9,lK,oJ,gg)){eN.wxVkey=1
+cs.push("./pages/appointment/appointment-history.vue.wxml:view:1:645")
+cs.pop()
+}
+eN.wxXCkey=1
+return aL
+}
+oH.wxXCkey=2
+_2z(z,7,cI,fE,oD,gg,oH,'data','index2','index2')
+cs.pop()
+return cF
+}
+oB.wxXCkey=2
+_2z(z,3,xC,e,s,gg,oB,'info','index1','index1')
+cs.pop()
 }catch(err){
 p_[b]=false
 throw err
@@ -6465,7 +6499,7 @@ __wxAppCode__['pages/user-center/user-center.wxml']=$gwx('./pages/user-center/us
 __wxAppCode__['pages/user-info/user-about.json']={"usingComponents":{},"navigationBarTitleText":"关于应用"};
 __wxAppCode__['pages/user-info/user-about.wxml']=$gwx('./pages/user-info/user-about.wxml');
 
-__wxAppCode__['pages/user-info/user-basic-info.json']={"usingComponents":{},"navigationBarTitleText":"基本资料"};
+__wxAppCode__['pages/user-info/user-basic-info.json']={"usingComponents":{},"navigationBarTitleText":"基本资料","bounce":"none","titleNView":{"buttons":[{"text":"保存","fontSize":"16","float":"right","color":"#333333","width":"55px"}]}};
 __wxAppCode__['pages/user-info/user-basic-info.wxml']=$gwx('./pages/user-info/user-basic-info.wxml');
 
 __wxAppCode__['pages/user-info/user-feedback.json']={"usingComponents":{},"navigationBarTitleText":"帮助与反馈"};
@@ -9306,7 +9340,7 @@ eval("/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\n    \"view\",\n    _vm._l(_vm.appointInfos, function(info, index1) {\n      return _c(\n        \"view\",\n        { key: index1, staticClass: \"cu-timeline\" },\n        [\n          _c(\"view\", { staticClass: \"cu-time\" }, [\n            _vm._v(_vm._s(info.currentDate))\n          ]),\n          _vm._l(info.data, function(data, index2) {\n            return _c(\n              \"view\",\n              {\n                key: index2,\n                staticClass: \"cu-item cur\",\n                class: [\n                  _vm.bgColors[data.status],\n                  \"text-\" + _vm.colors[data.status]\n                ]\n              },\n              [\n                _c(\"view\", { staticClass: \"content\" }, [\n                  _c(\"view\", { staticClass: \"radius\" }, [\n                    _c(\n                      \"view\",\n                      {\n                        staticClass: \"cu-tag shadow-blur\",\n                        class: \"bg-\" + _vm.colors[data.status]\n                      },\n                      [_vm._v(_vm._s(_vm.statusInfo[data.status]))]\n                    ),\n                    _c(\n                      \"view\",\n                      {\n                        staticStyle: { float: \"right\", \"font-size\": \"40rpx\" },\n                        attrs: {\n                          eventid: \"09e00cf0-0-\" + index1 + \"-\" + index2\n                        },\n                        on: { click: _vm.goComment }\n                      },\n                      [_c(\"text\", { staticClass: \"cuIcon-comment text-grey\" })]\n                    )\n                  ]),\n                  _c(\"view\", { staticClass: \"margin-top\" }, [\n                    _c(\"view\", [_vm._v(\"【姓名】\" + _vm._s(data.doctorName))]),\n                    _c(\"view\", [_vm._v(\"【科室】\" + _vm._s(data.department))]),\n                    _c(\"view\", [_vm._v(\"【职位】\" + _vm._s(data.position))]),\n                    _c(\"view\", [\n                      _vm._v(\"【挂号时间】\" + _vm._s(data.appointDate))\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\"【预约诊治时间】\" + _vm._s(data.appointTreatDate))\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\n                        \"【诊治时间】\" +\n                          _vm._s(data.treatDate === null ? \"-\" : data.treatDate)\n                      )\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\n                        \"【医生建议】\" +\n                          _vm._s(data.advice === null ? \"-\" : data.advice)\n                      )\n                    ])\n                  ])\n                ])\n              ]\n            )\n          })\n        ],\n        2\n      )\n    })\n  )\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=C:/Users/Zhou1/Desktop/ZGJ/hospital/pages/appointment/appointment-history.vue?vue&type=template&id=0c921a64&");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\n    \"view\",\n    _vm._l(_vm.appointInfos, function(info, index1) {\n      return _c(\n        \"view\",\n        { key: index1, staticClass: \"cu-timeline\" },\n        [\n          _c(\"view\", { staticClass: \"cu-time\" }, [\n            _vm._v(_vm._s(info.currentDate))\n          ]),\n          _vm._l(info.data, function(data, index2) {\n            return _c(\n              \"view\",\n              {\n                key: index2,\n                staticClass: \"cu-item cur\",\n                class: [\n                  _vm.bgColors[data.status],\n                  \"text-\" + _vm.colors[data.status]\n                ]\n              },\n              [\n                _c(\"view\", { staticClass: \"content\" }, [\n                  _c(\"view\", { staticClass: \"radius\" }, [\n                    _c(\n                      \"view\",\n                      {\n                        staticClass: \"cu-tag shadow-blur\",\n                        class: \"bg-\" + _vm.colors[data.status]\n                      },\n                      [_vm._v(_vm._s(_vm.statusInfo[data.status]))]\n                    ),\n                    data.status === 1\n                      ? _c(\n                          \"view\",\n                          {\n                            staticStyle: {\n                              float: \"right\",\n                              \"font-size\": \"40rpx\"\n                            },\n                            attrs: {\n                              eventid: \"09e00cf0-0-\" + index1 + \"-\" + index2\n                            },\n                            on: { click: _vm.goComment }\n                          },\n                          [\n                            _c(\"text\", {\n                              staticClass: \"cuIcon-comment text-grey\"\n                            })\n                          ]\n                        )\n                      : _vm._e()\n                  ]),\n                  _c(\"view\", { staticClass: \"margin-top\" }, [\n                    _c(\"view\", [_vm._v(\"【姓名】\" + _vm._s(data.doctorName))]),\n                    _c(\"view\", [_vm._v(\"【科室】\" + _vm._s(data.department))]),\n                    _c(\"view\", [_vm._v(\"【职位】\" + _vm._s(data.position))]),\n                    _c(\"view\", [\n                      _vm._v(\"【挂号时间】\" + _vm._s(data.appointDate))\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\"【预约诊治时间】\" + _vm._s(data.appointTreatDate))\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\n                        \"【诊治时间】\" +\n                          _vm._s(data.treatDate === null ? \"-\" : data.treatDate)\n                      )\n                    ]),\n                    _c(\"view\", [\n                      _vm._v(\n                        \"【医生建议】\" +\n                          _vm._s(data.advice === null ? \"-\" : data.advice)\n                      )\n                    ])\n                  ])\n                ])\n              ]\n            )\n          })\n        ],\n        2\n      )\n    })\n  )\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=C:/Users/Zhou1/Desktop/ZGJ/hospital/pages/appointment/appointment-history.vue?vue&type=template&id=0c921a64&");
 
 /***/ }),
 
