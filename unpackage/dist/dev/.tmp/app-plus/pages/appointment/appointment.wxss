@@ -1,0 +1,357 @@
+/* 
+  Animation 微动画  
+  基于ColorUI组建库的动画模块 by 文晓港 2019年3月26日19:52:28
+ */
+
+/* css 滤镜 控制黑白底色gif的 */
+.gif-black.data-v-7f34d7e7{  
+  mix-blend-mode: screen;
+}
+.gif-white.data-v-7f34d7e7{  
+  mix-blend-mode: multiply;
+}
+
+/* Animation css */
+[class*=animation-].data-v-7f34d7e7 {
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+}
+.animation-fade.data-v-7f34d7e7 {
+    -webkit-animation-name: fade-data-v-7f34d7e7;
+            animation-name: fade-data-v-7f34d7e7;
+    -webkit-animation-duration: .8s;
+            animation-duration: .8s;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear
+}
+.animation-scale-up.data-v-7f34d7e7 {
+    -webkit-animation-name: scale-up-data-v-7f34d7e7;
+            animation-name: scale-up-data-v-7f34d7e7
+}
+.animation-scale-down.data-v-7f34d7e7 {
+    -webkit-animation-name: scale-down-data-v-7f34d7e7;
+            animation-name: scale-down-data-v-7f34d7e7
+}
+.animation-slide-top.data-v-7f34d7e7 {
+    -webkit-animation-name: slide-top-data-v-7f34d7e7;
+            animation-name: slide-top-data-v-7f34d7e7
+}
+.animation-slide-bottom.data-v-7f34d7e7 {
+    -webkit-animation-name: slide-bottom-data-v-7f34d7e7;
+            animation-name: slide-bottom-data-v-7f34d7e7
+}
+.animation-slide-left.data-v-7f34d7e7 {
+    -webkit-animation-name: slide-left-data-v-7f34d7e7;
+            animation-name: slide-left-data-v-7f34d7e7
+}
+.animation-slide-right.data-v-7f34d7e7 {
+    -webkit-animation-name: slide-right-data-v-7f34d7e7;
+            animation-name: slide-right-data-v-7f34d7e7
+}
+.animation-shake.data-v-7f34d7e7 {
+    -webkit-animation-name: shake-data-v-7f34d7e7;
+            animation-name: shake-data-v-7f34d7e7
+}
+.animation-reverse.data-v-7f34d7e7 {
+    animation-direction: reverse
+}
+@-webkit-keyframes fade-data-v-7f34d7e7 {
+0% {
+        opacity: 0
+}
+100% {
+        opacity: 1
+}
+}
+@keyframes fade-data-v-7f34d7e7 {
+0% {
+        opacity: 0
+}
+100% {
+        opacity: 1
+}
+}
+@-webkit-keyframes scale-up-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: scale(.2);
+                transform: scale(.2)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1)
+}
+}
+@keyframes scale-up-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: scale(.2);
+                transform: scale(.2)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1)
+}
+}
+@-webkit-keyframes scale-down-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: scale(1.8);
+                transform: scale(1.8)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1)
+}
+}
+@keyframes scale-down-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: scale(1.8);
+                transform: scale(1.8)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1)
+}
+}
+@-webkit-keyframes slide-top-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+                transform: translateY(-100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+}
+}
+@keyframes slide-top-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+                transform: translateY(-100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+}
+}
+@-webkit-keyframes slide-bottom-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+                transform: translateY(100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+}
+}
+@keyframes slide-bottom-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+                transform: translateY(100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+}
+}
+@-webkit-keyframes shake-data-v-7f34d7e7 {
+0%,
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+10% {
+        -webkit-transform: translateX(-9rpx);
+                transform: translateX(-9rpx)
+}
+20% {
+        -webkit-transform: translateX(8rpx);
+                transform: translateX(8rpx)
+}
+30% {
+        -webkit-transform: translateX(-7rpx);
+                transform: translateX(-7rpx)
+}
+40% {
+        -webkit-transform: translateX(6rpx);
+                transform: translateX(6rpx)
+}
+50% {
+        -webkit-transform: translateX(-5rpx);
+                transform: translateX(-5rpx)
+}
+60% {
+        -webkit-transform: translateX(4rpx);
+                transform: translateX(4rpx)
+}
+70% {
+        -webkit-transform: translateX(-3rpx);
+                transform: translateX(-3rpx)
+}
+80% {
+        -webkit-transform: translateX(2rpx);
+                transform: translateX(2rpx)
+}
+90% {
+        -webkit-transform: translateX(-1rpx);
+                transform: translateX(-1rpx)
+}
+}
+@keyframes shake-data-v-7f34d7e7 {
+0%,
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+10% {
+        -webkit-transform: translateX(-9rpx);
+                transform: translateX(-9rpx)
+}
+20% {
+        -webkit-transform: translateX(8rpx);
+                transform: translateX(8rpx)
+}
+30% {
+        -webkit-transform: translateX(-7rpx);
+                transform: translateX(-7rpx)
+}
+40% {
+        -webkit-transform: translateX(6rpx);
+                transform: translateX(6rpx)
+}
+50% {
+        -webkit-transform: translateX(-5rpx);
+                transform: translateX(-5rpx)
+}
+60% {
+        -webkit-transform: translateX(4rpx);
+                transform: translateX(4rpx)
+}
+70% {
+        -webkit-transform: translateX(-3rpx);
+                transform: translateX(-3rpx)
+}
+80% {
+        -webkit-transform: translateX(2rpx);
+                transform: translateX(2rpx)
+}
+90% {
+        -webkit-transform: translateX(-1rpx);
+                transform: translateX(-1rpx)
+}
+}
+@-webkit-keyframes slide-left-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+}
+@keyframes slide-left-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+}
+@-webkit-keyframes slide-right-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+}
+@keyframes slide-right-data-v-7f34d7e7 {
+0% {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%)
+}
+100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0)
+}
+}
+image[class*="gif-"].data-v-7f34d7e7 {
+	border-radius: 6rpx;
+	display: block;
+}
+.fixed.data-v-7f34d7e7 {
+	position: fixed;
+	z-index: 99;
+}
+.VerticalNav.nav.data-v-7f34d7e7 {
+	width: 200rpx;
+	white-space: initial;
+}
+.VerticalNav.nav .cu-item.data-v-7f34d7e7 {
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	margin: 0;
+	border: none;
+	height: 80rpx;
+	position: relative;
+}
+.VerticalNav.nav .cu-item.cur.data-v-7f34d7e7 {
+	background-color: #f1f1f1;
+}
+.VerticalNav.nav .cu-item.cur.data-v-7f34d7e7::after {
+	content: "";
+	width: 8rpx;
+	height: 30rpx;
+	border-radius: 10rpx 0 0 10rpx;
+	position: absolute;
+	background-color: currentColor;
+	top: 0;
+	right: 0rpx;
+	bottom: 0;
+	margin: auto;
+}
+.VerticalBox.data-v-7f34d7e7 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.VerticalMain.data-v-7f34d7e7 {
+	background-color: #f1f1f1;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+

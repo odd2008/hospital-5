@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/read/main",
+    "pages/read/essay/main",
+    "pages/read/question/main",
+    "pages/movie/main",
+    "pages/movie/detail/main",
+    "pages/daily/main",
+    "pages/daily/detail/main",
+    "pages/appointment/appointment",
+    "pages/appointment/appointment-history",
+    "pages/appointment/appointment-doctor",
+    "pages/appointment/doctor-detail",
+    "pages/appointment/comment-detail",
+    "pages/appointment/comment",
+    "pages/healthdoc/healthdoc",
+    "pages/healthdoc/healthdoc-edit",
+    "pages/user-center/user-center",
+    "pages/login/login",
+    "pages/login/reg",
+    "pages/login/forget",
+    "pages/user-info/user-feedback",
+    "pages/user-info/user-secret",
+    "pages/user-info/user-about"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "预约挂号",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "color": "rgba(191, 191, 191, 1)",
+    "selectedColor": "rgba(77, 207, 224, 1)",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/main",
+        "text": "首页",
+        "iconPath": "static/tab-bar/home.png",
+        "selectedIconPath": "static/tab-bar/home1.png"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "iconPath": "static/tab-bar/appoint.png",
+        "selectedIconPath": "static/tab-bar/appoint1.png",
+        "text": "预约挂号"
+      },
+      {
+        "pagePath": "pages/healthdoc/healthdoc",
+        "iconPath": "static/tab-bar/healthdoc.png",
+        "selectedIconPath": "static/tab-bar/healthdoc1.png",
+        "text": "健康档案"
+      },
+      {
+        "pagePath": "pages/user-center/user-center",
+        "iconPath": "static/tab-bar/my.png",
+        "selectedIconPath": "static/tab-bar/my1.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "uni-one",
+  "compilerVersion": "1.9.4"
+}

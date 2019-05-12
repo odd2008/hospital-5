@@ -1,0 +1,214 @@
+{
+    "pages": [
+        {
+            "path": "pages/home/main",
+            "style": {
+                "navigationBarTitleText": "首页"
+            }
+        },
+        {
+            "path": "pages/read/main",
+            "style": {
+                "navigationBarTitleText": "文章&问答"
+            }
+        },
+        {
+            "path": "pages/read/essay/main"
+        },
+        {
+            "path": "pages/read/question/main"
+        },
+        {
+            "path": "pages/movie/main",
+            "style": {
+                "navigationBarTitleText": "影评"
+            }
+        },
+        {
+            "path": "pages/movie/detail/main"
+        },
+        {
+            "path": "pages/daily/main",
+            "style": {
+                "navigationBarTitleText": "日报"
+            }
+        },
+        {
+            "path": "pages/daily/detail/main",
+            "style": {
+                "navigationBarTitleText": "日报"
+            }
+        },
+		{
+			"path": "pages/appointment/appointment",
+			"style": {
+				"navigationBarTitleText": "预约挂号"
+			}
+		},
+		{
+			"path": "pages/appointment/appointment-history",
+			"style": {
+				"navigationBarTitleText": "预约历史"
+			}
+		},
+		{
+			"path": "pages/appointment/appointment-doctor",
+			"style": {
+				"navigationBarTitleText": "呼吸内科"
+			}
+		},
+		{
+			"path": "pages/appointment/doctor-detail",
+			"style": {
+				"navigationBarTitleText": "医生"
+			}
+		},
+		{
+			"path": "pages/appointment/comment-detail",
+			"style": {
+				"navigationBarTitleText": "全部评论"
+			}
+		},
+		{
+			"path": "pages/appointment/comment",
+			"style": {
+				"navigationBarTitleText": "添加评论",
+				"app-plus": {
+				    "bounce": "none",
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "提交", 
+				                "fontSize":"16",
+				                "float": "right",
+				                "color": "#333333",
+								"width": "55px"
+				            }
+				        ]
+				    }
+				}
+			}
+		},
+		{
+			"path": "pages/healthdoc/healthdoc",
+			"style": {
+				"navigationBarTitleText": "健康档案",
+                "app-plus": {
+                    "bounce": "none",
+                    "titleNView": {
+                        "buttons": [ 
+                            {
+                                "text": "编辑", 
+                                "fontSize":"16",
+                                "float": "right",
+                                "color": "#333333",
+								"width": "55px"
+                            }
+                        ]
+                    }
+                }
+			}
+		},
+		{
+			"path": "pages/healthdoc/healthdoc-edit",
+			"style": {
+				"navigationBarTitleText": "编辑信息",
+				"app-plus": {
+				    "bounce": "none",
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "保存", 
+				                "fontSize":"16",
+				                "float": "right",
+				                "color": "#333333",
+								"width": "55px"
+				            }
+				        ]
+				    }
+				}
+			}
+		},
+		{
+			"path": "pages/user-center/user-center",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		// 登录相关
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/login/reg",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/login/forget",
+			"style": {
+				"navigationBarTitleText": "忘记密码"
+			}
+		},
+		{
+			"path": "pages/user-info/user-feedback",
+			"style": {
+				"navigationBarTitleText": "帮助与反馈"
+			}
+		},
+		{
+			"path": "pages/user-info/user-secret",
+			"style": {
+				"navigationBarTitleText": "服务条款及隐私"
+			}
+		},
+		{
+			"path": "pages/user-info/user-about",
+			"style": {
+				"navigationBarTitleText": "关于应用"
+			}
+		}
+    ],
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "预约挂号",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "rgba(191, 191, 191, 1)",
+        "selectedColor": "rgba(77, 207, 224, 1)",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/home/main",
+                "text": "首页",
+                "iconPath": "static/tab-bar/home.png",
+                "selectedIconPath": "static/tab-bar/home1.png"
+            },
+            {
+                "pagePath": "pages/appointment/appointment",
+                "iconPath": "static/tab-bar/appoint.png",
+                "selectedIconPath": "static/tab-bar/appoint1.png",
+                "text": "预约挂号"
+            },
+            {
+                "pagePath": "pages/healthdoc/healthdoc",
+                "iconPath": "static/tab-bar/healthdoc.png",
+                "selectedIconPath": "static/tab-bar/healthdoc1.png",
+                "text": "健康档案"
+            },
+            {
+                "pagePath": "pages/user-center/user-center",
+                "iconPath": "static/tab-bar/my.png",
+                "selectedIconPath": "static/tab-bar/my1.png",
+                "text": "个人中心"
+            }
+        ]
+    }
+}

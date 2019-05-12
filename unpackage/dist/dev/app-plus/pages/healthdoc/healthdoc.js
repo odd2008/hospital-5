@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"cu-form-group .",[1],"title { min-width: calc(4em + ",[0,80],"); color: #8799a3; }\nwx-image[class*\x3d\x22gif-\x22] { border-radius: ",[0,6],"; display: block; }\n",],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./pages/healthdoc/healthdoc.wxss:6:7)",{path:"./pages/healthdoc/healthdoc.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/healthdoc/healthdoc.wxml') } }));

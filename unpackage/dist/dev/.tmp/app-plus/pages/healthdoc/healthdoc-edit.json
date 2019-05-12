@@ -1,0 +1,16 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "编辑信息",
+  "bounce": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "保存",
+        "fontSize": "16",
+        "float": "right",
+        "color": "#333333",
+        "width": "55px"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+setCssToHead(["@font-face { font-family: uniicons; font-weight: normal; font-style: normal; src: url(\x27https://img-cdn-qiniu.dcloud.net.cn/fonts/uni.ttf\x27) format(\x27truetype\x27); }\n.",[1],"page { width: 100%; }\nwx-view{ font-size: ",[0,28],"; }\n.",[1],"head{ width: 27%; background: #007AFF; margin: ",[0,40]," auto; }\n.",[1],"head-text{ margin: 0 auto; }\n",],undefined,{path:"./pages/user-info/user-about.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/user-info/user-about.wxml') } }));

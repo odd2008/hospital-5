@@ -1,0 +1,2 @@
+<import src="./appointment-history.vue.wxml" />
+    <template is="09e00cf0" data="{{ ...$root['0'], $root }}"/>
