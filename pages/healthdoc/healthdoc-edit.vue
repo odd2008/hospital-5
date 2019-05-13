@@ -8,15 +8,15 @@
 		<view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">住院史</view>
-				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.hospital" @input="hospitalInput" placeholder="请输入住院史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.hospitalHistory" @input="hospitalInput" placeholder="请输入住院史信息"></textarea>
 			</view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">手术史</view>
-				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.operation" @input="operationInput" placeholder="请输入手术史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.operationHistory" @input="operationInput" placeholder="请输入手术史信息"></textarea>
 			</view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">家族史</view>
-				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.family" @input="familyInput" placeholder="请输入家族史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx;" :disabled="modalName!=null" :value="basicInfo.familyHistory" @input="familyInput" placeholder="请输入家族史信息"></textarea>
 			</view>
 		</view>
 		
@@ -103,14 +103,9 @@
 		data() {
 			return {
 				basicInfo: {
-					name: '张三',
-					gender: '男',
-					age: 20,
-					height: 183,
-					weight: 63,
-					hospital: '住院信息',
-					operation: '双眼皮手术',
-					family: '色盲'
+					hospitalHistory: '住院信息',
+					operationHistory: '双眼皮手术',
+					familyHistory: '色盲'
 				},
 				index: 0,
 				genders: ['男', '女'],
@@ -244,17 +239,35 @@
 				});
 			},
 			hospitalInput(e) {
-				this.basicInfo.hospital = e.detail.value
+				this.basicInfo.hospitalHistory = e.detail.value
 			},
 			operationInput(e) {
-				this.basicInfo.operation = e.detail.value
+				this.basicInfo.operationHistory = e.detail.value
 			},
 			familyInput(e) {
-				this.basicInfo.family = e.detail.value
+				this.basicInfo.familyHistory = e.detail.value
 			}
 		},
 		onNavigationBarButtonTap() {
-			console.log("保存");
+			this.$requestWithToken({
+				url: '/healthDoc/saveHealthDoc',
+				header:{
+					'Content-Type':'application/x-www-form-urlencoded'
+				},
+				data: this.basicInfo,
+				succeed: (info) => {
+					if(info.status === 'success') {
+						console.log(JSON.stringify(info));
+						uni.showToast({
+							title: '保存成功',
+							icon: 'none',
+							duration: 1000
+						});
+					} else {
+						
+					}
+				}
+			});
 		}
 	}
 </script>

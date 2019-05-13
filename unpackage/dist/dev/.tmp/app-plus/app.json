@@ -18,6 +18,7 @@
     "pages/healthdoc/healthdoc-edit",
     "pages/user-center/user-center",
     "pages/user-info/user-basic-info",
+    "pages/user-info/user-account",
     "pages/login/login",
     "pages/login/reg",
     "pages/login/forget",

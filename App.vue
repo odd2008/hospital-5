@@ -1,6 +1,7 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 import Vue from 'vue'
+
 export default {
   created () {
     this.initPage()

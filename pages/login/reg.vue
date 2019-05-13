@@ -15,15 +15,14 @@
 				<image class="img" :src="showPassword?'/static/shilu-login/op.png':'/static/shilu-login/cl.png'" @tap="display"></image>
 			</view>
 			<view class="list-call">
-				<image class="img" src="/static/shilu-login/3.png"></image>
-				<input class="biaoti" v-model="code" type="number" maxlength="4" placeholder="验证码" />
-				<view class="yzm" :class="{ yzms: second>0 }" @tap="getcode">{{yanzhengma}}</view>
+				<image class="img" src="/static/shilu-login/mail.png"></image>
+				<input class="biaoti" v-model="mail" type="text" maxlength="30" placeholder="邮箱" />
 			</view>
 			<view class="list-call">
-				<image class="img" src="/static/shilu-login/4.png"></image>
-				<input class="biaoti" v-model="invitation" type="text" maxlength="12" placeholder="邀请码" />
+				<image class="img" src="/static/shilu-login/3.png"></image>
+				<input class="biaoti" v-model="code" type="number" maxlength="6" placeholder="验证码" />
+				<view class="yzm" :class="{ yzms: second>0 }" @tap="getcode">{{yanzhengma}}</view>
 			</view>
-			
 		</view>
 		
 		<view class="dlbutton" hover-class="dlbutton-hover" @tap="bindLogin">
@@ -53,11 +52,14 @@
 			return {
 				phoneno:'',
 				password:'',
-				code:'',
-				invitation:'',
-				xieyi:true,
+				code: '',
+				mail: '',
+				xieyi: true,
 				showPassword:false,
-				second:0
+				second: 0,
+				CustomBar: this.CustomBar,
+				modalName: false,
+				modalContent: ''
 			};
 		},
 		computed:{
@@ -84,25 +86,56 @@
 				if(this.second>0){
 					return;
 				}
+				console.log(this.mail);
+				let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //正则表达式
+				if(this.mail === "") { //输入不能为空
+					uni.showToast({
+						title: '邮箱不得为空',
+						icon: 'none',
+						duration: 1000
+					});
+				　　return;
+				} else if (!reg.test(this.mail)) { //正则验证不通过，格式不对
+					uni.showToast({
+						title: '邮箱格式不正确',
+						icon: 'none',
+						duration: 1000
+					});
+				　　return;
+				}
 				this.second = 60;
-				uni.request({
-				    url: 'http://***/getcode.html', //仅为示例，并非真实接口地址。
-				    data: {phoneno:this.phoneno,code_type:'reg'},
-					method: 'POST',
-					dataType:'json',
-				    success: (res) => {
-						if(res.data.code!=200){
-							uni.showToast({title:res.data.msg,icon:'none'});
-						}else{
-							uni.showToast({title:res.data.msg});
+				
+				this.$requestWithoutToken({
+					url: '/noToken/getMailCode',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						mail: this.mail,
+						code_type: this.code_type
+					},
+					succeed: (info) => {
+						console.log(JSON.stringify(info));
+						if(info.status === 'success'){
+							uni.showToast({
+								title: info.data,
+								icon:'none',
+								duration: 2000
+							});
 							js = setInterval(function(){
 								tha.second--;
 								if(tha.second==0){
 									clearInterval(js)
 								}
-							},1000)
+							}, 1000)
+						} else {
+							uni.showToast({
+								title: info.errMsg,
+								icon:'none',
+								duration: 2000
+							});
 						}
-				    }
+					}
 				});
 			},
 		    bindLogin() {
@@ -127,13 +160,69 @@
 		            });
 		            return;
 		        }
-				if (this.code.length != 4) {
+				let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //正则表达式
+			　　if(this.mail === ""){ //输入不能为空
+			　　　　 uni.showToast({
+						title: '邮箱不得为空',
+						icon: 'none',
+						duration: 1000
+					});
+			　　　　return;
+			　　 } else if (!reg.test(this.mail)) { //正则验证不通过，格式不对
+					uni.showToast({
+						title: '邮箱格式不正确',
+						icon: 'none',
+						duration: 1000
+					});
+			　　　　return;
+			　　}
+				if (this.code.length != 6) {
 				    uni.showToast({
 				        icon: 'none',
 				        title: '验证码不正确'
 				    });
 				    return;
 				}
+				this.$requestWithoutToken({
+					url: '/noToken/register',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						telephone: this.phoneno,
+						password: this.password,
+						mail: this.mail,
+						code:this.code,
+						code_type: this.code_type
+					},
+					succeed: (info) => {
+						console.log(JSON.stringify(info));
+						if(info.status === 'success'){
+							uni.setStorage({
+								key: this.$constants.AUTHORIZATION_KEY,
+								data: info.data,
+								success: function () {
+									console.log('缓存成功');
+									//登录成功
+									uni.showToast({
+										title: '注册成功！',
+										duration: 1000
+									});
+									//跳转到主页
+									uni.switchTab({
+										url: '/pages/home/main'
+									});
+								}
+							});
+						} else {
+							uni.showToast({
+								title: info.errorMsg,
+								icon:'none',
+								duration: 2000
+							});
+						}
+					}
+				});
 				uni.request({
 				    url: 'http://***/reg.html',
 				    data: {

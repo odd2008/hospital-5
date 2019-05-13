@@ -309,10 +309,10 @@ radio.radio .uni-radio-input-checked::after {
 	
 }
 .switch-sex::after {
-	content: "\E71C";
+	content: "";
 }
 .switch-sex::before {
-	content: "\E71A";
+	content: "";
 }
 .switch-sex .wx-switch-input,
 .switch-sex .uni-switch-input {

@@ -1,46 +1,51 @@
 <template>
 	<view class="center">
-		<view class="logo" @click="goLogin" :hover-class="!login ? 'logo-hover' : ''">
-			<image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
+		<view class="logo" @click="goBasicInfo()" :hover-class="!login ? 'logo-hover' : ''">
+			<view @click.stop>
+				<image class="logo-img" @click="viewImage" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
+			</view>
 			<view class="logo-title">
 				<text class="uer-name">Hi，{{login ? uerInfo.name : '您尚未完善资料'}}</text>
-				<text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
 			</view>
 		</view>
-		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goBasicInfo">
-				<text class="list-icon">&#xe60f;</text>
-				<text class="list-text">账户管理</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+		<view class="cu-list menu">
+			<view class="cu-item arrow margin-top" @click="goAccountInfo">
+				<view class="content">
+					<text class="cuIcon-lock list-icon"></text>
+					<text class="text-grey">账户管理</text>
+				</view>
 			</view>
-			<view class="center-list-item border-bottom" @click="goBasicInfo">
-				<text class="list-icon">&#xe60f;</text>
-				<text class="list-text">基本资料</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="cu-item arrow" @click="goBasicInfo">
+				<view class="content">
+					<text class="cuIcon-apps list-icon"></text>
+					<text class="text-grey">基本资料</text>
+				</view>
 			</view>
-			<view class="center-list-item" @click="goAppointHistory">
-				<text class="list-icon">&#xe639;</text>
-				<text class="list-text">预约历史</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			
+			<view class="cu-item arrow margin-top" @click="goAppointHistory">
+				<view class="content">
+					<text class="cuIcon-time list-icon"></text>
+					<text class="text-grey">预约历史</text>
+				</view>
 			</view>
-		</view>
-		<view class="center-list">
-			<view class="center-list-item border-bottom" @click="goFeedback">
-				<text class="list-icon">&#xe60b;</text>
-				<text class="list-text">帮助与反馈</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="cu-item arrow" @click="goFeedback">
+				<view class="content">
+					<text class="cuIcon-post list-icon"></text>
+					<text class="text-grey">帮助与反馈</text>
+				</view>
 			</view>
-			<view class="center-list-item" @click="goSecret">
-				<text class="list-icon">&#xe65f;</text>
-				<text class="list-text">服务条款及隐私</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			
+			<view class="cu-item arrow margin-top" @click="goSecret">
+				<view class="content">
+					<text class="cuIcon-mail list-icon"></text>
+					<text class="text-grey">服务条款及隐私</text>
+				</view>
 			</view>
-		</view>
-		<view class="center-list">
-			<view class="center-list-item" @click="goAbout">
-				<text class="list-icon">&#xe614;</text>
-				<text class="list-text">关于应用</text>
-				<text class="navigat-arrow">&#xe65e;</text>
+			<view class="cu-item arrow" @click="goAbout">
+				<view class="content">
+					<text class="cuIcon-info list-icon"></text>
+					<text class="text-grey">关于应用</text>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -56,7 +61,10 @@
 			return {
 				login: false,
 				avatarUrl: "../../static/uni-center/logo.png",
-				uerInfo: {}
+				uerInfo: {
+					avatarUrl: "../../static/uni-center/logo.png",
+					name: ''
+				}
 			}
 		},
 		methods: {
@@ -91,10 +99,52 @@
 				uni.navigateTo({
 					url: '../user-info/user-basic-info',
 				});
+			},
+			goAccountInfo() {
+				uni.navigateTo({
+					url: '../user-info/user-account'
+				});
+			},
+			viewImage() {
+				uni.previewImage({
+					urls: [this.uerInfo.avatarUrl],
+					current: this.uerInfo.avatarUrl
+				});
+			},
+			getUserInfo() {
+				this.$requestWithToken({
+					url: '/user/getUserInfo',
+					succeed: (info) => {
+						if(info.status === 'success') {
+							if(info.data.name !== null) {
+								this.login = true;
+								this.uerInfo.name = info.data.name;
+								if(info.data.headImageUrl !== null && info.data.headImageUrl.length !== 0){
+									this.uerInfo.avatarUrl = this.$constants.IMAGE_PUBLIC_PATH + info.data.headImageUrl;
+								}
+							} else {
+								uni.showToast({
+									title: '请先填写基本资料',
+									icon: 'none',
+									duration: 1000
+								});
+								uni.navigateTo({
+									url: '/pages/user-info/user-basic-info'
+								});
+							}
+						} else {
+							uni.reLaunch({
+								url: '/pages/login/login'
+							});
+						}
+					}
+				});
 			}
 		},
-		onLoad() {
-			
+		onShow() {
+			if(!this.login){
+				this.getUserInfo();
+			}
         }
 	}
 </script>
@@ -125,7 +175,7 @@
 		height: 240upx;
 		padding: 20upx;
 		box-sizing: border-box;
-		background:linear-gradient(-90deg,rgba(63,205,235,1),rgba(188,226,158,1));
+		background: #1cbbb4;
 		box-shadow:0upx 0upx 13upx 0upx rgba(164,217,228,0.2);
 		flex-direction: row;
 		align-items: center;
@@ -192,14 +242,8 @@
 	}
 
 	.list-icon {
-		width: 40upx;
-		height: 90upx;
-		line-height: 90upx;
-		font-size: 34upx;
+		font-size: 40upx;
 		color: #4DCFE0;
-		text-align: center;
-		font-family: texticons;
-		margin-right: 20upx;
 	}
 
 	.list-text {

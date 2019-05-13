@@ -59,10 +59,9 @@
 		            return;
 		        }
 				
-				// request请求
-				uni.request({
-					url: 'http://192.168.43.135:8089/user/login',
-					method:'POST',
+				// 无token 的request请求
+				this.$requestWithoutToken({
+					url: '/noToken/login',
 					header:{
 						'Content-Type':'application/x-www-form-urlencoded'
 					},
@@ -70,14 +69,12 @@
 						telephone:this.phoneno,
 						password:this.password
 					},
-					dataType:'json',
-					success: (res) => {
-						console.log(JSON.stringify(res.data));
-						if(res.data.status==='success'){
+					succeed: (info) => {
+						if(info.status === 'success'){
 							//缓存jwt token，用于后续请求验证
 							uni.setStorage({
-								key: 'HOSPITAL_AUTHORIZATION',
-								data: res.data.data,
+								key: this.$constants.AUTHORIZATION_KEY,
+								data: info.data,
 								success: function () {
 									console.log('缓存成功');
 									//登录成功
@@ -91,22 +88,13 @@
 									});
 								}
 							});
-						}else{
+						} else {
 							uni.showToast({
-								title: res.data.errorMsg,
+								title: info.errMsg,
 								icon:'none',
 								duration: 2000
 							});
 						}
-						
-					},
-					fail:(err)=>{
-						console.log('失败');
-						uni.showToast({
-							title: '网络错误，请重试！',
-							icon:'none',
-							duration: 2000
-						});
 					}
 				});
 				

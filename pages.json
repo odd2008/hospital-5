@@ -157,6 +157,12 @@
 		},
 		// 登录相关
 		{
+			"path": "pages/user-info/user-account",
+			"style": {
+				"navigationBarTitleText": "账户管理"
+			}
+		},
+		{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "登录"

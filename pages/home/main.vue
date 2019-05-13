@@ -45,18 +45,7 @@ import { mapState, mapActions } from 'vuex'
 import weather from './weather'
 export default {
 	onLoad() {
-		uni.getStorage({
-			key: 'HOSPITAL_AUTHORIZATION',
-			success: (res) => {
-			},
-			fail: (err) => {
-				console.log('授权码已清除，需要登录');
-				//需要登录，跳转到登录页
-				uni.reLaunch({
-					url: '/pages/login/login'
-				});
-			}
-		});
+		this.checkLogin();
 	},
 	mounted() {
 		this.initPage()
@@ -113,7 +102,21 @@ export default {
     async initPage() {
       await this.getNewIds()
       await this.getHomeData()
-    }
+    },
+	checkLogin() {
+		this.$requestWithToken({
+			url: '/user/test',
+			succeed: (info) => {
+				if(info.status === 'success') {
+					console.log(JSON.stringify(info));
+				} else {
+					uni.reLaunch({
+						url: '/pages/login/login'
+					});
+				}
+			}
+		});
+	}
   }
 }
 </script>

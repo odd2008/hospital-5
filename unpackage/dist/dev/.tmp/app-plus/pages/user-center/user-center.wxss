@@ -28,9 +28,7 @@ page.data-v-321c3912 {
 	padding: 20rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-	background:-webkit-gradient(linear,right top, left top,from(rgba(63,205,235,1)),to(rgba(188,226,158,1)));
-	background:-o-linear-gradient(right,rgba(63,205,235,1),rgba(188,226,158,1));
-	background:linear-gradient(-90deg,rgba(63,205,235,1),rgba(188,226,158,1));
+	background: #1cbbb4;
 	-webkit-box-shadow:0rpx 0rpx 13rpx 0rpx rgba(164,217,228,0.2);
 	        box-shadow:0rpx 0rpx 13rpx 0rpx rgba(164,217,228,0.2);
 	-webkit-box-orient: horizontal;
@@ -127,14 +125,8 @@ page.data-v-321c3912 {
 	border-bottom-style: solid;
 }
 .list-icon.data-v-321c3912 {
-	width: 40rpx;
-	height: 90rpx;
-	line-height: 90rpx;
-	font-size: 34rpx;
+	font-size: 40rpx;
 	color: #4DCFE0;
-	text-align: center;
-	font-family: texticons;
-	margin-right: 20rpx;
 }
 .list-text.data-v-321c3912 {
 	height: 90rpx;
