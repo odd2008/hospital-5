@@ -18,7 +18,7 @@
 					<view class="cu-list menu-avatar" >
 						<view class="cu-item" style="border-bottom:1upx solid #eee;" v-for="(type,index1) in item.types" :key="index1" :id="'type-'+index1"  @click="goDoctor(type)">
 							<view class="content" style="left: 50upx;">
-								<view class="text-grey">{{type}}</view>
+								<view class="text-grey">{{type.name}}</view>
 							</view>
 							<view class="action">
 								<text class="cu-tag round bg-cyan sm" style="padding-top: 10upx;">10</text>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+	const DEPART_KEY = 'DEPART_HOSPITAL';
 	export default {
 		data() {
 			return {
@@ -49,269 +50,16 @@
 				title: '加载中...',
 				mask: true
 			});
-			let list = [{
-					id: 0,
-					name: '内科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 1,
-					name: '外科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 2,
-					name: '骨科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 3,
-					name: '妇产科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 4,
-					name: '儿科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 5,
-					name: '皮肤科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 6,
-					name: '眼科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 7,
-					name: '耳鼻咽喉科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 8,
-					name: '口腔科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 9,
-					name: '肿瘤科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 10,
-					name: '中医科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 11,
-					name: '精神科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 12,
-					name: '疼痛科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 13,
-					name: '康复医学科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 14,
-					name: '医学影像科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 15,
-					name: '全科医疗科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 16,
-					name: '病理科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 17,
-					name: '护理门科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 18,
-					name: '营养科',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				},{
-					id: 19,
-					name: '其他',
-					types: [
-						'呼吸内科',
-						'心内科',
-						'消化内科',
-						'神经内科',
-						'肾内科',
-						'血液内科',
-						'风湿科门诊',
-						'内分泌科'
-					]
-				}];
-			this.list = list;
-			this.listCur = list[0];
+			uni.getStorage({
+				key: DEPART_KEY,
+				success: (res) => {
+					this.list = res.data;
+					this.listCur = this.list[0];
+				},
+				fail: () => {
+					this.loadData();
+				}
+			});
 		},
 		onReady() {
 			uni.hideLoading();
@@ -353,7 +101,31 @@
 			},
 			goDoctor(type){
 				uni.navigateTo({
-					url: 'appointment-doctor?type=' + type
+					url: `appointment-doctor?type=${type.name}&id=${type.id}`
+				});
+			},
+			loadData() {
+				this.$requestWithToken({
+					url: '/appointment/getDepartInfo',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							let list = info.data;
+							this.list = list;
+							this.listCur = list[0];
+							uni.setStorage({
+								key: DEPART_KEY,
+								data: info.data,
+								success: function () {
+									console.log('缓存成功');
+								}
+							});
+						} else {
+							
+						}
+					}
 				});
 			}
 		}

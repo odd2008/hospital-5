@@ -9,13 +9,16 @@
 			<view class="cu-item" v-for="(doctor, index) in doctorInfos" :key="index" :id="'doctor-'+index" style="height: 200upx; border-bottom: 1upx solid #eee;" @click="goDetail(doctor)">
 				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
 				<view class="content">
-					<view class="text-black">【{{doctor.position}}】{{doctor.doctorName}}</view>
+					<view class="text-black flex">
+						<view style="width: 120upx;">{{doctor.name}}</view>
+						<view>【{{doctor.position}}】</view>
+					</view>
 					<view class="flex">
 						<view class="text-grey" style="width: 200upx;">
 							【评分】{{doctor.rate}}
 						</view>
 						<view class="text-grey">
-							【预约量】{{doctor.appointNums}}
+							【预约量】{{doctor.appointNum}}
 						</view>
 					</view>
 					<view class="text-gray text-sm flex">
@@ -61,67 +64,8 @@
 	export default {
 		data() {
 			return {
-				doctorInfos: [{
-					doctorName: '张三',  // 医生姓名
-					position: '专家',  // 职位
-					rate: 9.3,
-					appointNums: 2019,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '李四',  // 医生姓名
-					position: '主任医师',  // 职位
-					rate: 9.6,
-					appointNums: 1098,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '王五',  // 医生姓名
-					position: '副主任医师',  // 职位
-					rate: 9.2,
-					appointNums: 3909,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '赵六',  // 医生姓名
-					position: '专家',  // 职位
-					rate: 9.8,
-					appointNums: 4098,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				},{
-					doctorName: '刘能',  // 医生姓名
-					position: '医师',  // 职位
-					rate: 9.9,
-					appointNums: 1896,
-					skills: '擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。'
-				}],
+				doctorInfos: [],
+				departId: 0,
 				commentInfo: [{
 					userLogoUrl: '../../static/uni-center/logo.png',
 					userName: '蒋云芬',
@@ -153,6 +97,8 @@
 			uni.setNavigationBarTitle({
 				title: option.type
 			});
+			this.departId = option.id;
+			this.loadData(option.id);
 		},
 		onReady() {
 			
@@ -160,14 +106,38 @@
 		methods: {
 			goDetail(doctor) {
 				uni.navigateTo({
-					url: `doctor-detail?doctorName=${doctor.doctorName}&position=${doctor.position}`
+					url: `doctor-detail?name=${doctor.name}&position=${doctor.position}&id=${doctor.id}`
 				});
 			},
 			goCommentDetail() {
 				uni.navigateTo({
 					url: 'comment-detail'
 				});
+			},
+			loadData(departId) {
+				// 取医生的数据
+				this.$requestWithToken({
+					url: '/appointment/getDoctorInfo',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						departId: departId
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.doctorInfos = info.data;
+						} else {
+							
+						}
+						uni.stopPullDownRefresh();
+					}
+				});
 			}
+		},
+		onPullDownRefresh() {
+			console.log('refresh');
+			this.loadData(this.departId);
 		}
 	}
 </script>

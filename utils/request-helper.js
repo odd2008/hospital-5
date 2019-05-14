@@ -15,13 +15,12 @@ let requestWithToken = (config) => {
 	if(config.header) {
 		header = config.header;
 	}
-	console.log(method);
 	uni.getStorage({
 		key: AUTHORIZATION_KEY,
 		success: (res) => {
 			header[AUTHORIZATION_KEY] = res.data;
-			console.log(JSON.stringify(header));
-			console.log(JSON.stringify(data));
+			// console.log(JSON.stringify(header));
+			// console.log(JSON.stringify(data));
 			uni.request({
 				url: constants.REMOTE_URL + config.url,
 				method: method,
@@ -29,7 +28,7 @@ let requestWithToken = (config) => {
 				dataType: 'json',
 				data: data,
 				success: (resultInfo) => {
-					console.log(JSON.stringify(resultInfo));
+					// console.log(JSON.stringify(resultInfo));
 					if (resultInfo.statusCode === 200) {
 						config.succeed(resultInfo.data);
 					}

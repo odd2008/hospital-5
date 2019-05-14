@@ -3,7 +3,22 @@
         {
             "path": "pages/home/main",
             "style": {
-                "navigationBarTitleText": "首页"
+                "navigationBarTitleText": "首页",
+				"pullToRefresh": {
+				    "support": true,
+				    "color": "#333333",
+				    "style": "circle",
+					"height": "20%",
+				    "contentdown": {
+				        "caption": "刷新数据"
+				    },
+				    "contentover": {
+				        "caption": "释放刷新数据"
+				    },
+				    "contentrefresh": {
+				        "caption": "正在刷新"
+				    }
+				}
             }
         },
         {
@@ -48,25 +63,85 @@
 		{
 			"path": "pages/appointment/appointment-history",
 			"style": {
-				"navigationBarTitleText": "预约历史"
+				"navigationBarTitleText": "预约历史",
+				"pullToRefresh": {
+				    "support": true,
+				    "color": "#333333",
+				    "style": "circle",
+					"height": "20%",
+				    "contentdown": {
+				        "caption": "刷新数据"
+				    },
+				    "contentover": {
+				        "caption": "释放刷新数据"
+				    },
+				    "contentrefresh": {
+				        "caption": "正在刷新"
+				    }
+				}
 			}
 		},
 		{
 			"path": "pages/appointment/appointment-doctor",
 			"style": {
-				"navigationBarTitleText": "呼吸内科"
+				"navigationBarTitleText": "呼吸内科",
+				"pullToRefresh": {
+				    "support": true,
+				    "color": "#333333",
+				    "style": "circle",
+					"height": "20%",
+				    "contentdown": {
+				        "caption": "刷新数据"
+				    },
+				    "contentover": {
+				        "caption": "释放刷新数据"
+				    },
+				    "contentrefresh": {
+				        "caption": "正在刷新"
+				    }
+				}
 			}
 		},
 		{
 			"path": "pages/appointment/doctor-detail",
 			"style": {
-				"navigationBarTitleText": "医生"
+				"navigationBarTitleText": "医生",
+				"pullToRefresh": {
+				    "support": true,
+				    "color": "#333333",
+				    "style": "circle",
+					"height": "20%",
+				    "contentdown": {
+				        "caption": "刷新数据"
+				    },
+				    "contentover": {
+				        "caption": "释放刷新数据"
+				    },
+				    "contentrefresh": {
+				        "caption": "正在刷新"
+				    }
+				}
 			}
 		},
 		{
 			"path": "pages/appointment/comment-detail",
 			"style": {
-				"navigationBarTitleText": "全部评论"
+				"navigationBarTitleText": "全部评论",
+				"pullToRefresh": {
+				    "support": true,
+				    "color": "#333333",
+				    "style": "circle",
+					"height": "20%",
+				    "contentdown": {
+				        "caption": "刷新数据"
+				    },
+				    "contentover": {
+				        "caption": "释放刷新数据"
+				    },
+				    "contentrefresh": {
+				        "caption": "正在刷新"
+				    }
+				}
 			}
 		},
 		{

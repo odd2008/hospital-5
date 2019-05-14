@@ -2,11 +2,11 @@
 	<view class="center">
 		<view class="logo">
 			<view class="logo-top">
-				<image class="logo-img" :src="doctorInfo.logoUrl"></image>
+				<image class="logo-img" :src="doctorInfo.headImageUrl"></image>
 				<view class="logo-title">
 					<view style="height: 70upx;padding-top: 10upx;box-sizing: border-box;">
 						<view class="uer-name flex">
-							<view style="width: 120upx; font-size: 35upx;">{{doctorInfo.doctorName}}</view>
+							<view style="width: 120upx; font-size: 35upx;">{{doctorInfo.name}}</view>
 							<view class="cu-tag round line-white sm" style="margin-top: 13upx;">{{doctorInfo.department}}</view>
 							<view class="cu-tag round line-white sm" style="margin-top: 13upx;">{{doctorInfo.position}}</view>
 						</view>
@@ -14,7 +14,7 @@
 					<!-- <text class="go-login navigat-arrow">&#xe65e;</text> -->
 					<view style="height: 50upx;">
 						<view class="uer-name flex" style="font-size: 25upx;">
-							<view style="width: 200upx;">预约量：{{doctorInfo.appointNums}}</view>
+							<view style="width: 200upx;">预约量：{{doctorInfo.appointNum}}</view>
 							<view style="">评分：{{doctorInfo.rate}}</view>
 						</view>
 					</view>
@@ -40,7 +40,7 @@
 						<view style="width: 160upx;">{{info.appointDate}}</view>
 						<view style="width: 70upx;">{{info.weekDay}}</view>
 						<view style="width: 70upx;">{{info.timeSpan}}</view>
-						<view class="cu-tag round line-cyan sm">3天后</view>
+						<view class="cu-tag round line-cyan sm">{{info.remainDate}}天后</view>
 					</view>
 					<view class="text-gray text-sm flex">
 						<view style="">{{doctorInfo.position}}</view>
@@ -87,109 +87,31 @@
 		</view>
 		
 		<view class="cu-list menu-avatar" style="margin-bottom: 50upx;">
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;">
+			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index">
 				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
 				<view class="content">
 					<view class="text-black">
-						<text style="width: 100upx;">施如霞</text>
-						<text class="cu-tag round sm bg-orange">专家</text>
+						<text style="width: 100upx;">{{info.name}}</text>
+						<text class="cu-tag round sm bg-orange">{{info.position}}</text>
 					</view>
 					<view class="flex">
 						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
-							评分：9.6
+							评分：{{info.rate}}
 						</view>
 						<view class="text-grey text-sm">
-							预约量：2409
+							预约量：{{info.appointNum}}
 						</view>
 					</view>
 					<view class="text-gray text-sm flex">
 						<text class="text-cut">
-							擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。
+							{{info.skills}}
 						</text> 
 					</view>
 				</view>
 				<view class="action">
-					<text class="text-gray text-sm">妇科</text>
+					<text class="text-gray text-sm">{{info.department}}</text>
 				</view>
 			</view>
-			
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				<view class="content">
-					<view class="text-black">
-						<text style="width: 100upx;">施如霞</text>
-						<text class="cu-tag round sm bg-orange">专家</text>
-					</view>
-					<view class="flex">
-						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
-							评分：9.6
-						</view>
-						<view class="text-grey text-sm">
-							预约量：2409
-						</view>
-					</view>
-					<view class="text-gray text-sm flex">
-						<text class="text-cut">
-							擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。
-						</text> 
-					</view>
-				</view>
-				<view class="action">
-					<text class="text-gray text-sm">妇科</text>
-				</view>
-			</view>
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				<view class="content">
-					<view class="text-black">
-						<text style="width: 100upx;">施如霞</text>
-						<text class="cu-tag round sm bg-orange">专家</text>
-					</view>
-					<view class="flex">
-						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
-							评分：9.6
-						</view>
-						<view class="text-grey text-sm">
-							预约量：2409
-						</view>
-					</view>
-					<view class="text-gray text-sm flex">
-						<text class="text-cut">
-							擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。
-						</text> 
-					</view>
-				</view>
-				<view class="action">
-					<text class="text-gray text-sm">妇科</text>
-				</view>
-			</view>
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				<view class="content">
-					<view class="text-black">
-						<text style="width: 100upx;">施如霞</text>
-						<text class="cu-tag round sm bg-orange">专家</text>
-					</view>
-					<view class="flex">
-						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
-							评分：9.6
-						</view>
-						<view class="text-grey text-sm">
-							预约量：2409
-						</view>
-					</view>
-					<view class="text-gray text-sm flex">
-						<text class="text-cut">
-							擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。
-						</text> 
-					</view>
-				</view>
-				<view class="action">
-					<text class="text-gray text-sm">妇科</text>
-				</view>
-			</view>
-			
-			
 		</view>
 		<!-- 更多列表 -->
 	</view>
@@ -201,40 +123,18 @@
 	export default {
 		data() {
 			return {
-				appointTimes: [{
-					appointDate: '2019-05-13',
-					weekDay: '周一',
-					timeSpan: '上午',
-					price: 35
-				},{
-					appointDate: '2019-05-14',
-					weekDay: '周二',
-					timeSpan: '上午',
-					price: 35
-				},{
-					appointDate: '2019-05-15',
-					weekDay: '周三',
-					timeSpan: '上午',
-					price: 35
-				},{
-					appointDate: '2019-05-15',
-					weekDay: '周三',
-					timeSpan: '下午',
-					price: 35
-				},{
-					appointDate: '2019-05-16',
-					weekDay: '周四',
-					timeSpan: '上午',
-					price: 35
-				}],
+				appointTimes: [],
+				weekValues: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
 				doctorInfo: {
-					logoUrl: '../../static/uni-center/logo.png',
-					doctorName: '蒋云芬',
-					department: '内科',
-					position: '主任医师',
-					appointNums: 2406,
-					rate: 9.4
+					headImageUrl: '../../static/uni-center/logo.png',
+					name: '',
+					department: '',
+					position: '',
+					appointNum: 0,
+					rate: 0,
+					id: 0
 				},
+				recommendInfo: [],
 				commentInfo: [{
 					userLogoUrl: '../../static/uni-center/logo.png',
 					userName: '蒋云芬',
@@ -263,20 +163,104 @@
 			};
 		},
 		onLoad(option) {
-			this.doctorInfo.doctorName = option.doctorName;
+			this.doctorInfo.name = option.name;
 			this.doctorInfo.position = option.position;
 			uni.setNavigationBarTitle({
-				title: `${option.position} - ${option.doctorName}`
-			});
+				title: `${option.position} - ${option.name}`
+			}); 
+			this.loadData(option.id);
 		},
 		onReady() {
 
+		},
+		onPullDownRefresh() {
+			console.log('refresh');
+			this.loadData(this.doctorInfo.id);
 		},
 		methods: {
 			goCommentDetail() {
 				uni.navigateTo({
 					url: 'comment-detail'
 				});
+			},
+			loadData(id) {
+				// 取医生的数据
+				this.$requestWithToken({
+					url: '/appointment/getDoctorDetail',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						id: id
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.doctorInfo = info.data;
+							if(this.doctorInfo.headImageUrl === null || this.doctorInfo.headImageUrl.length === 0) {
+								this.doctorInfo.headImageUrl = '../../static/uni-center/logo.png';
+							}
+							this.getAppointData(info.data.id);
+						} else {
+							
+						}
+					}
+				});
+				// 推荐信息
+				this.$requestWithToken({
+					url: '/appointment/getRecommendDoctor',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.recommendInfo = info.data;
+						} else {
+							
+						}
+						uni.stopPullDownRefresh();
+					}
+				});
+			},
+			getAppointData(doctorId) {
+				// 预约时间信息
+				this.$requestWithToken({
+					url: '/appointment/getAppointTime',
+					header:{
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					data: {
+						doctorId: doctorId
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.appointTimes = [];
+							for(let timeInfo of info.data) {
+								let tempDate = new Date();
+								tempDate.setFullYear(timeInfo.appointDate.split("-")[0]);
+								tempDate.setMonth(parseInt(timeInfo.appointDate.split("-")[1]) - 1);
+								tempDate.setDate(timeInfo.appointDate.split("-")[2]);
+								
+								let currentDate = new Date();
+								let remainDate = parseInt(parseInt(tempDate - currentDate) / 1000 /60 / 60 /24);
+								
+								this.appointTimes.push({
+									appointDate: timeInfo.appointDate,
+									timeSpan: timeInfo.timeSpan,
+									price: timeInfo.price,
+									id: timeInfo.id,
+									totalNum: timeInfo.totalNum,
+									appointNum: timeInfo.appointNum,
+									weekDay: this.weekValues[tempDate.getDay() - 1],
+									remainDate: remainDate
+								});
+							}
+							
+						} else {
+							
+						}
+					}
+				});
+				
 			}
 		}
 	}

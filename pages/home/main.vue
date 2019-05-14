@@ -1,16 +1,23 @@
 <template>
-  <div class="container">
-    <swiper class="card-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
-     :autoplay="true" interval="5000" duration="500" @change="cardSwiper" indicator-color="#8799a3"
-     indicator-active-color="#0081ff">
-    	<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
-    		<view class="swiper-item">
-    			<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
-    			<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
-    		</view>
-    	</swiper-item>
-    </swiper>
-		
+	<div class="container">
+		<swiper class="card-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
+		 :autoplay="true" interval="5000" duration="500" @change="cardSwiper" indicator-color="#8799a3"
+		 indicator-active-color="#0081ff">
+			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
+				<view class="swiper-item">
+					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+					<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+				</view>
+			</swiper-item>
+		</swiper>
+		<view class="cu-bar bg-white solid-bottom margin-top">
+			<view class="action">
+				<text class="cuIcon-titles text-orange"></text> 天气信息
+			</view>
+		</view>
+		<view class="margin-top" style="background-color: #fff;margin-bottom: 20upx;">
+			<weather :weather="weather" v-if="weather.status === 'ok'"></weather>
+		</view>
 		<view class="cu-bar bg-white solid-bottom">
 			<view class="action">
 				<text class="cuIcon-titles text-orange"></text> 名人名言
@@ -29,15 +36,42 @@
 			</view>
 		</view>
 		
-		<view class="cu-bar bg-white solid-bottom">
+		<!-- 更多列表 -->
+		<view class="cu-bar bg-white solid-bottom margin-top">
 			<view class="action">
-				<text class="cuIcon-titles text-orange"></text> 天气信息
+				<text class="cuIcon-discoverfill text-orange"></text> 推荐医师
 			</view>
 		</view>
-		<view class="margin-top" style="background-color: #fff;margin-bottom: 20upx;">
-			<weather :weather="weather" v-if="weather.status === 'ok'"></weather>
+		
+		<view class="cu-list menu-avatar" style="margin-bottom: 50upx;">
+			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index">
+				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+				<view class="content">
+					<view class="text-black">
+						<text style="width: 100upx;">{{info.name}}</text>
+						<text class="cu-tag round sm bg-orange">{{info.position}}</text>
+					</view>
+					<view class="flex">
+						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
+							评分：{{info.rate}}
+						</view>
+						<view class="text-grey text-sm">
+							预约量：{{info.appointNum}}
+						</view>
+					</view>
+					<view class="text-gray text-sm flex">
+						<text class="text-cut">
+							{{info.skills}}
+						</text> 
+					</view>
+				</view>
+				<view class="action">
+					<text class="text-gray text-sm">{{info.department}}</text>
+				</view>
+			</view>
 		</view>
-  </div>
+		<!-- 更多列表 -->
+	</div>
 </template>
 
 <script>
@@ -94,7 +128,8 @@ export default {
 			}],
 			dotStyle: false,
 			towerStart: 0,
-			direction: ''
+			direction: '',
+			recommendInfo: []
 		}
 	},
   methods: {
@@ -116,7 +151,31 @@ export default {
 				}
 			}
 		});
+	},
+	loadData() {
+		// 推荐信息
+		this.$requestWithToken({
+			url: '/appointment/getRecommendDoctor',
+			header:{
+				'Content-Type':'application/x-www-form-urlencoded'
+			},
+			succeed: (info) => {
+				if(info.status === 'success') {
+					this.recommendInfo = info.data;
+				} else {
+					
+				}
+				uni.stopPullDownRefresh();
+			}
+		});
 	}
+  },
+  onLoad() {
+  	this.loadData();
+  },
+  onPullDownRefresh() {
+  	console.log('refresh');
+  	this.loadData();
   }
 }
 </script>
