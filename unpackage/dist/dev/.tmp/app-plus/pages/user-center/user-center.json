@@ -1,4 +1,19 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "个人中心"
+  "navigationBarTitleText": "个人中心",
+  "pullToRefresh": {
+    "support": true,
+    "color": "#333333",
+    "style": "circle",
+    "height": "20%",
+    "contentdown": {
+      "caption": "刷新数据"
+    },
+    "contentover": {
+      "caption": "释放刷新数据"
+    },
+    "contentrefresh": {
+      "caption": "正在刷新"
+    }
+  }
 }

@@ -39,7 +39,7 @@
 					</view>
 					<view class="cu-list menu-avatar">
 						<view class="padding flex flex-direction">
-							<button class="cu-btn line-red margin-tb-sm lg">删除</button>
+							<button class="cu-btn line-red margin-tb-sm lg" @tap.stop="deleteImage" :data-index="index">删除</button>
 						</view>
 					</view>
 				</view>
@@ -103,39 +103,13 @@
 		data() {
 			return {
 				basicInfo: {
-					hospitalHistory: '住院信息',
-					operationHistory: '双眼皮手术',
-					familyHistory: '色盲'
-				},
-				index: 0,
-				genders: ['男', '女'],
-				date: '1996-12-01',
-				dateRange: {
-					start: '1900-01-01',
-					end:  ''
+					hospitalHistory: '',
+					operationHistory: '',
+					familyHistory: ''
 				},
 				CustomBar: this.CustomBar,
 				loadProgress: 0,
-				sickInfo: [
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					},
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					},
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					}
-				],
+				sickInfo: [],
 				imgList: [],
 				showAddSick: false,
 				modalName: null,
@@ -144,8 +118,7 @@
 		},
 		onLoad() {
 			this.LoadProgress();
-			let currentDate = new Date();
-			this.dateRange.end = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+			this.loadInfo();
 		},
 		methods: {
 			LoadProgress() {
@@ -189,21 +162,73 @@
 			saveSickInfo(){
 				let currentDate = new Date();
 				let currentDateStr = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
-				this.sickInfo.push({
-					date: currentDateStr,
-					imageUrl: this.imgList[0],
-					content: this.remark,
-					contentCut: true
+				// 上传图片
+				this.$uploadWithoutToken({
+					url: '/healthDoc/uploadReportImage',
+					filePath: this.imgList[0],
+					header: {
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						content: this.remark,
+						createDate: currentDateStr
+					},
+					succeed: (info) => {
+						console.log(JSON.stringify(info));
+						console.log(this.$constants.IMAGE_PUBLIC_PATH + info.data);
+						this.sickInfo.push({
+							date: currentDateStr,
+							imageUrl: this.imgList[0],
+							content: this.remark,
+							contentCut: true
+						});
+						this.imgList = this.imgList.concat(this.imgList)
+						uni.showToast({
+							title: '保存成功',
+							icon: 'none',
+							duration: 1000
+						});
+						this.showAddSick = false;
+						this.imgList = [];
+						this.remark = '';
+					}
 				});
-				this.imgList = this.imgList.concat(this.imgList)
-				uni.showToast({
-					title: '保存成功',
-					duration: 1000
+				
+			},
+			deleteImage(e) {
+				uni.showModal({
+					title: '删除病史/报告',
+					content: '确定要删除这张图片吗？',
+					cancelText: '取消',
+					confirmText: '确定',
+					success: res => {
+						if (res.confirm) {
+							let currentIndex = e.currentTarget.dataset.index;
+							this.$requestWithToken({
+								url: '/healthDoc/deleteHealthImage',
+								header:{
+									'Content-Type':'application/x-www-form-urlencoded'
+								},
+								data: {
+									id: this.sickInfo[currentIndex].id
+								},
+								succeed: (info) => {
+									if(info.status === 'success') {
+										this.sickInfo.splice(currentIndex, 1);
+										console.log(JSON.stringify(info));
+										uni.showToast({
+											title: '删除成功',
+											icon: 'none',
+											duration: 1000
+										});
+									} else {
+										
+									}
+								}
+							});
+						}
+					}
 				});
-				this.showAddSick = false;
-				this.imgList = [];
-				console.log(this.remark);
-				this.remark = '';
 			},
 			ChooseImage() {
 				uni.chooseImage({
@@ -227,10 +252,10 @@
 			},
 			DelImg(e) {
 				uni.showModal({
-					title: '召唤师',
-					content: '确定要删除这段回忆吗？',
-					cancelText: '再看看',
-					confirmText: '再见',
+					title: '病史/报告',
+					content: '确定要删除这张图片吗？',
+					cancelText: '取消',
+					confirmText: '确定',
 					success: res => {
 						if (res.confirm) {
 							this.imgList.splice(e.currentTarget.dataset.index, 1)
@@ -246,6 +271,48 @@
 			},
 			familyInput(e) {
 				this.basicInfo.familyHistory = e.detail.value
+			},
+			remarkInput(e) {
+				this.remark = e.detail.value;
+			},
+			loadInfo() {
+				this.$requestWithToken({
+					url: '/healthDoc/getHealthDoc',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.basicInfo = info.data;
+						} else {
+							
+						}
+					}
+				});
+				// 取图片
+				this.$requestWithToken({
+					url: '/healthDoc/getHealthImage',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							console.log(JSON.stringify(info.data));
+						 	for(let image of info.data) {
+								console.log(JSON.stringify(image));
+								this.sickInfo.push({
+									id: image.id,
+									date: image.createDate,
+									imageUrl: this.$constants.IMAGE_PUBLIC_PATH + image.imageUrl,
+									content: image.content,
+									contentCut: true
+								});
+							}
+						} else {
+							
+						}
+					}
+				});
 			}
 		},
 		onNavigationBarButtonTap() {

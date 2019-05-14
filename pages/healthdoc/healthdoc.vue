@@ -9,15 +9,15 @@
 		<view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">住院史</view>
-				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.hospital" placeholder="请输入住院史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.hospitalHistory"></textarea>
 			</view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">手术史</view>
-				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.operation" placeholder="请输入手术史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.operationHistory"></textarea>
 			</view>
 			<view class="cu-form-group align-start margin-top" style="height: 300upx;">
 				<view class="title">家族史</view>
-				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.family" placeholder="请输入家族史信息"></textarea>
+				<textarea maxlength="-1" style="height: 250upx; color: #333333;" disabled="true" :value="basicInfo.familyHistory"></textarea>
 			</view>
 		</view>
 		
@@ -50,30 +50,11 @@
 		data() {
 			return {
 				basicInfo: {
-					hospital: '住院信息',
-					operation: '双眼皮手术',
-					family: '色盲'
+					hospitalHistory: '',
+					operationHistory: '',
+					familyHistory: ''
 				},
-				sickInfo: [
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					},
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					},
-					{
-						date: '2019-01-12',
-						imageUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-						content: '我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。',
-						contentCut: true
-					}
-				]
+				sickInfo: []
 			}
 		},
 		methods: {
@@ -95,12 +76,59 @@
 						});
 					}
 				});
+			},
+			loadInfo() {
+				this.$requestWithToken({
+					url: '/healthDoc/getHealthDoc',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.basicInfo = info.data;
+							uni.stopPullDownRefresh();
+						} else {
+							
+						}
+					}
+				});
+				
+				// 取图片
+				this.$requestWithToken({
+					url: '/healthDoc/getHealthImage',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.sickInfo = [];
+						 	for(let image of info.data) {
+								this.sickInfo.push({
+									date: image.createDate,
+									imageUrl: this.$constants.IMAGE_PUBLIC_PATH + image.imageUrl,
+									content: image.content,
+									contentCut: true
+								});
+							}
+							uni.stopPullDownRefresh();
+						} else {
+							
+						}
+					}
+				});
 			}
+		},
+		onLoad() {
+			this.loadInfo();
 		},
 		onNavigationBarButtonTap() {
 			uni.navigateTo({
 				url: 'healthdoc-edit'
 			});
+		},
+		onPullDownRefresh() {
+			console.log('refresh');
+			this.loadInfo();
 		}
 	}
 </script>

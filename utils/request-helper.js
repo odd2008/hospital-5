@@ -127,6 +127,7 @@ let uploadWithoutToken = (config) => {
 				filePath: config.filePath,
 				header: header,
 				name: 'file',
+				formData: data,
 				success: (resultInfo) => {
 					console.log(JSON.stringify(resultInfo));
 					if (resultInfo.statusCode === 200) {
@@ -139,7 +140,7 @@ let uploadWithoutToken = (config) => {
 						});
 					} else {
 						uni.showToast({
-							title: resultInfo.error,
+							title: '请求出错',
 							icon: 'none',
 							duration: 1000
 						});

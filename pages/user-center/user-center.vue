@@ -132,6 +132,7 @@
 									url: '/pages/user-info/user-basic-info'
 								});
 							}
+							uni.stopPullDownRefresh();
 						} else {
 							uni.reLaunch({
 								url: '/pages/login/login'
@@ -141,11 +142,15 @@
 				});
 			}
 		},
-		onShow() {
+		onLoad() {
 			if(!this.login){
 				this.getUserInfo();
 			}
-        }
+        },
+		onPullDownRefresh() {
+			console.log('refresh');
+			this.getUserInfo();
+		}
 	}
 </script>
 
@@ -175,7 +180,7 @@
 		height: 240upx;
 		padding: 20upx;
 		box-sizing: border-box;
-		background: #1cbbb4;
+		background: #8799a3;
 		box-shadow:0upx 0upx 13upx 0upx rgba(164,217,228,0.2);
 		flex-direction: row;
 		align-items: center;
@@ -243,7 +248,7 @@
 
 	.list-icon {
 		font-size: 40upx;
-		color: #4DCFE0;
+		color: #8799a3;
 	}
 
 	.list-text {
