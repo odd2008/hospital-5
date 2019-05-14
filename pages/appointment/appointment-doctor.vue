@@ -28,7 +28,8 @@
 					</view>
 				</view>
 				<view class="action">
-					<view class="cu-tag radius bg-cyan">预约</view>
+					<view class="cu-tag round bg-red sm" v-if="doctor.count < 10 && doctor.count !== 0" >{{doctor.count}}</view>
+					<view class="cu-tag round bg-grey sm" v-else >{{doctor.count}}</view>
 				</view>
 			</view>
 		</view>

@@ -45,10 +45,12 @@
 					<view class="text-gray text-sm flex">
 						<view style="">{{doctorInfo.position}}</view>
 						<view style="color: #e54d42; margin-left: 20upx;">{{info.price}}元</view>
+						<view style="color: #fbbd08; margin-left: 30upx;">剩余：{{info.totalNum - info.appointNum}}</view>
 					</view>
 				</view>
 				<view class="action">
-					<view class="cu-tag radius bg-cyan">预约</view>
+					<view class="cu-tag radius bg-grey" v-if="info.totalNum === info.appointNum" @click="appointFull">约满</view>
+					<view class="cu-tag radius bg-cyan" v-else @click="goOrder">预约</view>
 				</view>
 			</view>
 		</view>
@@ -181,6 +183,18 @@
 			goCommentDetail() {
 				uni.navigateTo({
 					url: 'comment-detail'
+				});
+			},
+			appointFull() {
+				uni.showToast({
+					title: '已约满，请选择其他时间',
+					icon: 'none',
+					duration: 2000
+				});
+			},
+			goOrder() {
+				uni.navigateTo({
+					url: 'appointment-order'
 				});
 			},
 			loadData(id) {

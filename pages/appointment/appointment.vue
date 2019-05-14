@@ -17,12 +17,12 @@
 					</view>
 					<view class="cu-list menu-avatar" >
 						<view class="cu-item" style="border-bottom:1upx solid #eee;" v-for="(type,index1) in item.types" :key="index1" :id="'type-'+index1"  @click="goDoctor(type)">
-							<view class="content" style="left: 50upx;">
+							<view class="content" style="left: 50upx; width: 350upx;">
 								<view class="text-grey">{{type.name}}</view>
 							</view>
-							<view class="action">
+							<!-- <view class="action">
 								<text class="cu-tag round bg-cyan sm" style="padding-top: 10upx;">10</text>
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</view>
@@ -146,7 +146,7 @@
 	}
 
 	.VerticalNav.nav {
-		width: 200upx;
+		width: 260upx;
 		white-space: initial;
 	}
 

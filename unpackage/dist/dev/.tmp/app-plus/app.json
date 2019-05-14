@@ -9,6 +9,7 @@
     "pages/daily/main",
     "pages/daily/detail/main",
     "pages/appointment/appointment",
+    "pages/appointment/appointment-order",
     "pages/appointment/appointment-history",
     "pages/appointment/appointment-doctor",
     "pages/appointment/doctor-detail",

@@ -61,6 +61,26 @@
 			}
 		},
 		{
+			"path": "pages/appointment/appointment-order",
+			"style": {
+				"navigationBarTitleText": "预约信息",
+				"app-plus": {
+				    "bounce": "none",
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "提交", 
+				                "fontSize":"16",
+				                "float": "right",
+				                "color": "#333333",
+								"width": "55px"
+				            }
+				        ]
+				    }
+				}
+			}
+		},
+		{
 			"path": "pages/appointment/appointment-history",
 			"style": {
 				"navigationBarTitleText": "预约历史",

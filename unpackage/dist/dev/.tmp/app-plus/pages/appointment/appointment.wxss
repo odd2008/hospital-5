@@ -314,7 +314,7 @@ image[class*="gif-"].data-v-801074f2 {
 	z-index: 99;
 }
 .VerticalNav.nav.data-v-801074f2 {
-	width: 200rpx;
+	width: 260rpx;
 	white-space: initial;
 }
 .VerticalNav.nav .cu-item.data-v-801074f2 {
