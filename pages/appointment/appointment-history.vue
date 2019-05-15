@@ -8,7 +8,7 @@
 					<view class="radius">
 						<view class="cu-tag shadow-blur" :class="'bg-'+colors[info.status]">{{statusInfo[info.status]}}</view>
 						
-						<view class="" style="float: right; font-size: 40upx;" v-if="info.status === 1" @click="goComment">
+						<view class="" style="float: right; font-size: 40upx;" v-if="info.status === 1" @click="goComment(info.doctorDTO.id)">
 							<text class="cuIcon-comment text-grey"></text>
 						</view>
 						<view class="" style="float: right; font-size: 40upx;" v-else-if="info.status === 0" @click="cancleAppoint(info.id, info.appointTime.id)">
@@ -46,6 +46,9 @@
 			<view class="cu-time"><text class="cuIcon-we text-yellow"></text></view>
 		</view>
 		
+		<view class="load-progress" :class="loadProgress!=0?'show':'hide'" :style="[{top:CustomBar+'px'}]">
+			<view class="load-progress-bar bg-orange" :style="[{transform: 'translate3d(-' + (100-loadProgress) + '%, 0px, 0px)'}]"></view>
+		</view>
 	</view>
 </template>
 
@@ -53,7 +56,9 @@
 	export default {
 		data() {
 			return {
-				// months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+				CustomBar: this.CustomBar,
+				loadProgress: 0,
+				modalName: null,
 				statusInfo: ['等待就诊', '已就诊', '挂号取消'],
 				bgColors: ['cuIcon-noticefill','cuIcon-roundcheck', 'cuIcon-roundclose'],
 				colors: ['red', 'cyan', 'grey'],
@@ -61,13 +66,24 @@
 			};
 		},
 		onLoad() {
+			this.LoadProgress();
 			this.loadData();
 		},
 		methods:{
-			goComment() {
+			goComment(id) {
 				uni.navigateTo({
-					url: 'comment'
+					url: 'comment?id=' + id 
 				});
+			},
+			LoadProgress() {
+				this.loadProgress = this.loadProgress + 3;
+				if (this.loadProgress < 100) {
+					setTimeout(() => {
+						this.LoadProgress();
+					}, 40)
+				} else {
+					this.loadProgress = 0;
+				}
 			},
 			cancleAppoint(orderId, timeId) {
 				uni.showModal({

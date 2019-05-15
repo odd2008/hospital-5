@@ -67,15 +67,15 @@
 		</view>
 		<view class="cu-list menu-avatar comment solids-top">
 			<view class="cu-item" v-for="(info,index) in commentInfo" :key="index">
-				<view class="cu-avatar round" :style='"background-image:url(" + info.userLogoUrl + ");"'></view>
+				<view class="cu-avatar round" :style='"background-image:url(" + publicPath + info.user.headImageUrl + ");"'></view>
 				<view class="content">
-					<view class="text-grey">{{info.userName}}</view>
+					<view class="text-grey">{{info.user.name}}</view>
 					<view class="text-gray text-content text-df">
-						{{info.content}}
+						{{info.comment.content}}
 					</view>
 					<view class="margin-top-sm flex justify-between">
-						<view class="text-gray text-df">{{info.publishDate}}</view>
-						<view class="text-yellow text-df">{{info.rate}}</view>
+						<view class="text-gray text-df">{{info.comment.publishDate}}</view>
+						<view class="text-yellow text-df">{{info.comment.rate}}.0</view>
 					</view>
 				</view>
 			</view>
@@ -136,32 +136,9 @@
 					rate: 0,
 					id: 0
 				},
+				publicPath: this.$constants.IMAGE_PUBLIC_PATH,
 				recommendInfo: [],
-				commentInfo: [{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '主任问的问题都能详细解答，挺有耐心，配了药，药效很好，感谢主任',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '主任问的问题都能详细解答，挺有耐心，配了药，药效很好，感谢主任',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '主任问的问题都能详细解答，挺有耐心，配了药，药效很好，感谢主任',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '主任问的问题都能详细解答，挺有耐心，配了药，药效很好，感谢主任',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				}]
+				commentInfo: []
 			};
 		},
 		onLoad(option) {
@@ -182,7 +159,7 @@
 		methods: {
 			goCommentDetail() {
 				uni.navigateTo({
-					url: 'comment-detail'
+					url: `comment-detail?targetId=${this.doctorInfo.id}&targetType=1`
 				});
 			},
 			appointFull() {
@@ -199,6 +176,13 @@
 				});
 			},
 			loadData(id) {
+				console.log(id);
+				this.getDoctorDetail(id);
+				this.getAppointData(id);
+				this.getCommentInfo(id);
+				this.getRecommendDoctor();
+			},
+			getDoctorDetail(doctorId) {
 				// 取医生的数据
 				this.$requestWithToken({
 					url: '/appointment/getDoctorDetail',
@@ -206,7 +190,7 @@
 						'Content-Type':'application/x-www-form-urlencoded'
 					},
 					data: {
-						id: id
+						id: doctorId
 					},
 					succeed: (info) => {
 						if(info.status === 'success') {
@@ -214,12 +198,13 @@
 							if(this.doctorInfo.headImageUrl === null || this.doctorInfo.headImageUrl.length === 0) {
 								this.doctorInfo.headImageUrl = '../../static/uni-center/logo.png';
 							}
-							this.getAppointData(info.data.id);
 						} else {
 							
 						}
 					}
 				});
+			},
+			getRecommendDoctor() {
 				// 推荐信息
 				this.$requestWithToken({
 					url: '/appointment/getRecommendDoctor',
@@ -276,8 +261,32 @@
 						}
 					}
 				});
-				
+			},
+			getCommentInfo(doctorId) {
+				// 评论信息
+				this.$requestWithToken({
+					url: '/appointment/getComment',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						targetId: doctorId,
+						targetType: 1
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.commentInfo = info.data.slice(0, 4);
+						} else {
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
 			}
+			
 		}
 	}
 </script>

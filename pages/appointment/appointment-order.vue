@@ -251,10 +251,10 @@
 						uni.showToast({
 							title: '预约成功',
 							icon: 'none',
-							duration: 2000
+							duration: 1000
 						});
-						uni.redirectTo({
-							url: '/pages/appointment/appointment-history'
+						uni.navigateBack({
+							delta: 1
 						});
 					} else {
 						uni.showToast({

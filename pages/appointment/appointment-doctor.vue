@@ -44,15 +44,15 @@
 		</view>
 		<view class="cu-list menu-avatar comment solids-top">
 			<view class="cu-item" v-for="(info,index) in commentInfo" :key="index">
-				<view class="cu-avatar round" :style='"background-image:url(" + info.userLogoUrl + ");"'></view>
+				<view class="cu-avatar round" :style='"background-image:url(" + publicPath + info.user.headImageUrl + ");"'></view>
 				<view class="content">
-					<view class="text-grey">{{info.userName}}</view>
+					<view class="text-grey">{{info.user.name}}</view>
 					<view class="text-gray text-content text-df">
-						{{info.content}}
+						{{info.comment.content}}
 					</view>
 					<view class="margin-top-sm flex justify-between">
-						<view class="text-gray text-df">{{info.publishDate}}</view>
-						<view class="text-yellow text-df">{{info.rate}}</view>
+						<view class="text-gray text-df">{{info.comment.publishDate}}</view>
+						<view class="text-yellow text-df">{{info.comment.rate}}.0</view>
 					</view>
 				</view>
 			</view>
@@ -67,31 +67,8 @@
 			return {
 				doctorInfos: [],
 				departId: 0,
-				commentInfo: [{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '科室仪器十分先进，检查见过很靠谱，医务人员尽心尽责，十分满意，感谢',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '科室仪器十分先进，检查见过很靠谱，医务人员尽心尽责，十分满意，感谢',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '科室仪器十分先进，检查见过很靠谱，医务人员尽心尽责，十分满意，感谢',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				},{
-					userLogoUrl: '../../static/uni-center/logo.png',
-					userName: '蒋云芬',
-					content: '科室仪器十分先进，检查见过很靠谱，医务人员尽心尽责，十分满意，感谢',
-					publishDate: '2018年12月4日',
-					rate: 9.1
-				}]
+				publicPath: this.$constants.IMAGE_PUBLIC_PATH,
+				commentInfo: []
 			};
 		},
 		onLoad(option) {
@@ -112,7 +89,7 @@
 			},
 			goCommentDetail() {
 				uni.navigateTo({
-					url: 'comment-detail'
+					url: `comment-detail?targetId=${this.departId}&targetType=2`
 				});
 			},
 			loadData(departId) {
@@ -128,6 +105,29 @@
 					succeed: (info) => {
 						if(info.status === 'success') {
 							this.doctorInfos = info.data;
+						} else {
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
+				
+				// 取评论的数据
+				this.$requestWithToken({
+					url: '/appointment/getComment',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						targetId: departId,
+						targetType: 2
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.commentInfo = info.data.slice(0, 4);
 						} else {
 							uni.showToast({
 								title: '网络错误，请重试',

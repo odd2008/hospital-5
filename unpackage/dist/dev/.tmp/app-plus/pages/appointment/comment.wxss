@@ -1,0 +1,32 @@
+
+@font-face {
+    	font-family: uniicons;
+    	font-weight: normal;
+    	font-style: normal;
+    	src: url('https://img-cdn-qiniu.dcloud.net.cn/fonts/uni.ttf') format('truetype');
+}
+.feedback-star-view.feedback-title.data-v-68c0e047 {
+		-webkit-box-pack: start;
+		-webkit-justify-content: flex-start;
+		    -ms-flex-pack: start;
+		        justify-content: flex-start;
+		margin: 0;
+}
+.feedback-star.data-v-68c0e047 {
+		font-family: uniicons;
+		font-size: 40rpx;
+		margin-left: 6rpx;
+}
+.feedback-star-view.data-v-68c0e047 {
+		margin-left: 26rpx;
+}
+.feedback-star.data-v-68c0e047:after {
+		content: '\E408';
+}
+.feedback-star.active.data-v-68c0e047 {
+		color: #FFB400;
+}
+.feedback-star.active.data-v-68c0e047:after {
+		content: '\E438';
+}
+
