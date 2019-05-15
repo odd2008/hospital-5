@@ -253,7 +253,7 @@
 							icon: 'none',
 							duration: 2000
 						});
-						uni.navigateTo({
+						uni.redirectTo({
 							url: '/pages/appointment/appointment-history'
 						});
 					} else {

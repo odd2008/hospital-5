@@ -140,9 +140,7 @@
 								console.log('无信息');
 							}
 						} else {
-							uni.reLaunch({
-								url: '/pages/login/login'
-							});
+							
 						}
 					}
 				});

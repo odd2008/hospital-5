@@ -129,9 +129,12 @@
 						if(info.status === 'success') {
 							this.doctorInfos = info.data;
 						} else {
-							
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
+							});
 						}
-						uni.stopPullDownRefresh();
 					}
 				});
 			}
