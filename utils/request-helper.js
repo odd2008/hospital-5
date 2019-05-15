@@ -35,7 +35,7 @@ let requestWithToken = (config) => {
 					if (resultInfo.statusCode === 401) {
 						console.log('未登录');
 						//需要登录，跳转到登录页
-						uni.redirectTo({
+						uni.reLaunch({
 							url: '/pages/login/login'
 						});
 					}
@@ -43,13 +43,21 @@ let requestWithToken = (config) => {
 				fail: (err) => {
 					console.log(JSON.stringify(err));
 					console.log('网络错误，请重试！');
+					uni.showToast({
+						title: '网络错误，请重试！',
+						icon: 'none',
+						duration: 2000
+					});
+				},
+				complete: () => {
+					uni.stopPullDownRefresh();
 				}
 			});
 		},
 		fail: function(err) {
 			console.log('授权码已清除，需要登录');
 			//需要登录，跳转到登录页
-			uni.redirectTo({
+			uni.reLaunch({
 				url: '/pages/login/login'
 			});
 		}
@@ -134,7 +142,7 @@ let uploadWithoutToken = (config) => {
 					} else if (resultInfo.statusCode === 401) {
 						console.log('未登录');
 						//需要登录，跳转到登录页
-						uni.redirectTo({
+						uni.reLaunch({
 							url: '/pages/login/login'
 						});
 					} else {
@@ -160,7 +168,7 @@ let uploadWithoutToken = (config) => {
 		fail: function(err) {
 			console.log('授权码已清除，需要登录');
 			//需要登录，跳转到登录页
-			uni.redirectTo({
+			uni.reLaunch({
 				url: '/pages/login/login'
 			});
 		}

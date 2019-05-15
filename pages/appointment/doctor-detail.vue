@@ -50,7 +50,7 @@
 				</view>
 				<view class="action">
 					<view class="cu-tag radius bg-grey" v-if="info.totalNum === info.appointNum" @click="appointFull">约满</view>
-					<view class="cu-tag radius bg-cyan" v-else @click="goOrder">预约</view>
+					<view class="cu-tag radius bg-cyan" v-else @click="goOrder(info)">预约</view>
 				</view>
 			</view>
 		</view>
@@ -192,9 +192,10 @@
 					duration: 2000
 				});
 			},
-			goOrder() {
+			goOrder(info) {
+				let time = `${info.appointDate}(${info.weekDay})${info.timeSpan}`;
 				uni.navigateTo({
-					url: 'appointment-order'
+					url: `appointment-order?doctorId=${this.doctorInfo.id}&appointTimeId=${info.id}&time=${time}&price=${info.price}`
 				});
 			},
 			loadData(id) {
@@ -265,7 +266,8 @@
 									totalNum: timeInfo.totalNum,
 									appointNum: timeInfo.appointNum,
 									weekDay: this.weekValues[tempDate.getDay() - 1],
-									remainDate: remainDate
+									remainDate: remainDate,
+									id: timeInfo.id
 								});
 							}
 							

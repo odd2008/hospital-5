@@ -2,10 +2,10 @@
 	<view>
 		<view class="solids-top margin-top">
 			<view class="doctor-wrap">
-				<view class="cu-avatar round" :style='"background-image:url(" + info.userLogoUrl + ");"'></view>
+				<view class="cu-avatar round" :style='"background-image:url(" + doctorInfo.headImageUrl + ");"'></view>
 				<view class="title">
-					<view class="doctor-depart">{{info.department}}</view>
-					<view class="doctor-name">{{info.doctorName}}</view>
+					<view class="doctor-depart">{{doctorInfo.department}}</view>
+					<view class="doctor-name">{{doctorInfo.name}}</view>
 					<view class="doctor-tip">医生</view>
 				</view>
 			</view>
@@ -23,7 +23,7 @@
 						科室医生
 					</view>
 					<view class="info-right">
-						{{info.department}} - {{info.doctorName}}
+						{{doctorInfo.department}} - {{doctorInfo.name}}
 					</view>
 				</view>
 				<view class="row">
@@ -31,7 +31,7 @@
 						门诊时间
 					</view>
 					<view class="info-right">
-						2019-05-27 周一 上午
+						{{appointTimeInfo.time}}
 					</view>
 				</view>
 				<view class="row">
@@ -39,7 +39,7 @@
 						门诊类型
 					</view>
 					<view class="info-right">
-						专家
+						{{doctorInfo.position}}
 					</view>
 				</view>
 				<view class="row">
@@ -47,7 +47,7 @@
 						费用
 					</view>
 					<view class="info-right">
-						50.0元 （挂号费）
+						{{appointTimeInfo.price}}
 					</view>
 				</view>
 			</view>
@@ -57,8 +57,8 @@
 					<view class="detail-left">
 						就诊人
 					</view>
-					<view class="detail-right">
-						张三
+					<view class="detail-right" @click="goBasicInfo">
+						{{userInfo.name}}
 						<text class="cuIcon-right" style="margin-left: 30upx;"></text>
 					</view>
 				</view>
@@ -80,15 +80,15 @@
 						疾病信息
 					</view>
 					<view class="detail-right">
-						<input name="input" class="sickInput" placeholder-style="color: #8799a3;" placeholder="请填写疾病信息"></input>
+						<input name="input" class="sickInput" v-model="sickInfo" placeholder-style="color: #8799a3;" placeholder="请填写疾病信息"></input>
 					</view>
 				</view>
 				<view class="detail-row">
 					<view class="detail-left">
-						健康档案
+						健康信息
 					</view>
-					<view class="detail-right">
-						50.0元 （挂号费）
+					<view class="detail-right" @click="goHealthInfo">
+						个人健康档案
 						<text class="cuIcon-right" style="margin-left: 30upx;"></text>
 					</view>
 				</view>
@@ -110,18 +110,34 @@
 	export default {
 		data() {
 			return {
-				info: {
-					userLogoUrl: '../../static/uni-center/logo.png',
-					doctorName: '王强',
-					department: '消化科'
-					
+				sickInfo: '',
+				userInfo: {
+					name: '去完善信息'
+				},
+				doctorInfo: {
+					headImageUrl: '../../static/uni-center/logo.png',
+					name: '',
+					department: '',
+					position: '',
+					appointNum: 0,
+					rate: 0,
+					id: 0
+				},
+				appointTimeInfo: {
+					time: '',
+					id: 0,
+					price: 0
 				},
 				types: ['初诊', '复诊'],
 				type: '初诊'
 			};
 		},
-		onLoad() {
-			
+		onLoad(option) {
+			this.appointTimeInfo.time = option.time;
+			this.appointTimeInfo.id = option.appointTimeId;
+			this.appointTimeInfo.price = option.price;
+			this.doctorInfo.id = option.doctorId;
+			this.loadData();
 		},
 		onReady() {
 			
@@ -129,7 +145,126 @@
 		methods: {
 			typeChanged(e) {
 				this.type = this.types[e.detail.value];
+			},
+			goBasicInfo() {
+				uni.navigateTo({
+					url: '../user-info/user-basic-info'
+				});
+			},
+			goHealthInfo() {
+				uni.navigateTo({
+					url: '../healthdoc/healthdoc-edit'
+				});
+			},
+			loadData() {
+				// 取医生的数据
+				this.$requestWithToken({
+					url: '/appointment/getDoctorDetail',
+					header:{
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					data: {
+						id: this.doctorInfo.id
+					},
+					succeed: (info) => {
+						if(info.status === 'success') {
+							this.doctorInfo = info.data;
+							if(this.doctorInfo.headImageUrl === null || this.doctorInfo.headImageUrl.length === 0) {
+								this.doctorInfo.headImageUrl = '../../static/uni-center/logo.png';
+							}
+						} else {
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
+				this.getUserInfo();
+			},
+			getUserInfo() {
+				this.$requestWithToken({
+					url: '/user/getUserInfo',
+					succeed: (info) => {
+						if(info.status === 'success') {
+							if(info.data.name !== null) {
+								this.userInfo.name = info.data.name;
+								if(info.data.headImageUrl !== null && info.data.headImageUrl.length !== 0){
+									this.userInfo.avatarUrl = this.$constants.IMAGE_PUBLIC_PATH + info.data.headImageUrl;
+								}
+							} else {
+								uni.showToast({
+									title: '请先填写基本资料',
+									icon: 'none',
+									duration: 2000
+								});
+								uni.navigateTo({
+									url: '/pages/user-info/user-basic-info'
+								});
+							}
+						} else {
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
 			}
+		},
+		onNavigationBarButtonTap() {
+			if(this.sickInfo.trim().length === 0) {
+				uni.showToast({
+					title: '请填写疾病信息',
+					icon: 'none',
+					duration: 2000
+				});
+				return;
+			}
+			if(this.userInfo.name === '去完善信息') {
+				uni.showToast({
+					title: '请先完善您的基本信息',
+					icon: 'none',
+					duration: 2000
+				});
+				return;
+			}
+			let currentDate = new Date();
+			let formData = {
+				doctorId: this.doctorInfo.id,
+				appointTimeId: this.appointTimeInfo.id,
+				treatType: this.type,
+				sickInfo: this.sickInfo,
+				createTime: `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+			};
+			this.$requestWithToken({
+				url: '/appointment/addAppointOrder',
+				header:{
+					'Content-Type':'application/x-www-form-urlencoded'
+				},
+				data: formData,
+				succeed: (info) => {
+					if(info.status === 'success') {
+						console.log(JSON.stringify(info));
+						uni.showToast({
+							title: '预约成功',
+							icon: 'none',
+							duration: 2000
+						});
+						uni.navigateTo({
+							url: '/pages/appointment/appointment-history'
+						});
+					} else {
+						uni.showToast({
+							title: info.errMsg,
+							icon: 'none',
+							duration: 2000
+						});
+					}
+				}
+			});
 		}
 	}
 </script>

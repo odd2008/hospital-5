@@ -7,7 +7,7 @@
 		</view>
 		<view class="cu-list menu-avatar">
 			<view class="cu-item" v-for="(doctor, index) in doctorInfos" :key="index" :id="'doctor-'+index" style="height: 200upx; border-bottom: 1upx solid #eee;" @click="goDetail(doctor)">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+				<view class="cu-avatar round lg" style="background-image:url(https://kano.guahao.cn/WGA2611380_image140.jpg);"></view>
 				<view class="content">
 					<view class="text-black flex">
 						<view style="width: 120upx;">{{doctor.name}}</view>

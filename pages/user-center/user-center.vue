@@ -126,16 +126,17 @@
 								uni.showToast({
 									title: '请先填写基本资料',
 									icon: 'none',
-									duration: 1000
+									duration: 2000
 								});
 								uni.navigateTo({
 									url: '/pages/user-info/user-basic-info'
 								});
 							}
-							uni.stopPullDownRefresh();
 						} else {
-							uni.reLaunch({
-								url: '/pages/login/login'
+							uni.showToast({
+								title: '网络错误，请重试',
+								icon: 'none',
+								duration: 2000
 							});
 						}
 					}
