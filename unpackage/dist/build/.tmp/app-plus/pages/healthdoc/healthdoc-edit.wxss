@@ -1,0 +1,13 @@
+
+.cu-form-group .title {
+	min-width: calc(4em + 80rpx);
+	color: #8799a3;
+}
+image[class*="gif-"] {
+	border-radius: 6rpx;
+	display: block;
+}
+.picker {
+	width: 500rpx;
+}
+

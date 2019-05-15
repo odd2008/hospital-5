@@ -1,0 +1,2 @@
+<import src="./healthdoc-edit.vue.wxml" />
+    <template is="35918998" data="{{ ...$root['0'], $root }}"/>

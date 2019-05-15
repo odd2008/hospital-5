@@ -211,7 +211,7 @@ eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.SE
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var remoteUrls = {\n  PRODUCT_BASE_URL: 'http://111.230.253.60:8080/healthcare',\n  DEVELOP_BASE_URL: 'http://192.168.43.135:8089' };\n\nvar currentBaseUrl = remoteUrls.DEVELOP_BASE_URL;\nvar constants = {\n  AUTHORIZATION_KEY: 'HOSPITAL_AUTHORIZATION',\n  REMOTE_URL: currentBaseUrl,\n  IMAGE_PUBLIC_PATH: \"\".concat(currentBaseUrl, \"/static\") // 图片公共路径\n};\n\nmodule.exports = constants;\n\n//# sourceURL=uni-app:///utils/constants.js?70b9");
+eval("var remoteUrls = {\n  PRODUCT_BASE_URL: 'http://111.230.253.60:8089',\n  DEVELOP_BASE_URL: 'http://192.168.43.135:8089' };\n\nvar currentBaseUrl = remoteUrls.PRODUCT_BASE_URL;\nvar constants = {\n  AUTHORIZATION_KEY: 'HOSPITAL_AUTHORIZATION',\n  REMOTE_URL: currentBaseUrl,\n  IMAGE_PUBLIC_PATH: \"\".concat(currentBaseUrl, \"/static\") // 图片公共路径\n};\n\nmodule.exports = constants;\n\n//# sourceURL=uni-app:///utils/constants.js?70b9");
 
 /***/ }),
 

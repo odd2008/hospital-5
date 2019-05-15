@@ -273,19 +273,19 @@ view {
 }
 
 
-.title.data-v-25b74c14 {
+.title.data-v-2918c9b4 {
   font-size: 36rpx;
   font-weight: 700;
   margin: .8em .8em;
   text-align: center;
 }
-.author.data-v-25b74c14 {
+.author.data-v-2918c9b4 {
   color: #cacaca;
   font-size: 24rpx;
   text-align: right;
   padding-right: 2em;
 }
-.summary.data-v-25b74c14 {
+.summary.data-v-2918c9b4 {
   position: relative;
   color: #b0b0b0;
   font-size: 24rpx;
@@ -296,7 +296,7 @@ view {
   height: 60rpx;
   line-height: 60rpx;
 }
-.summary .line.data-v-25b74c14 {
+.summary .line.data-v-2918c9b4 {
   position: absolute;
   top: 14rpx;
   left: 20rpx;

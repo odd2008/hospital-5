@@ -1,0 +1,11 @@
+
+.border-red.data-v-ed1acdd4 {
+	border: 1rpx solid #e54d42;
+}
+.border-cyan.data-v-ed1acdd4 {
+	border: 1rpx solid #1cbbb4;
+}
+.border-grey.data-v-ed1acdd4 {
+	border: 1rpx solid #8799a3;
+}
+

@@ -1,4 +1,31 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "健康档案"
+  "navigationBarTitleText": "健康档案",
+  "bounce": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "编辑",
+        "fontSize": "16",
+        "float": "right",
+        "color": "#333333",
+        "width": "55px"
+      }
+    ]
+  },
+  "pullToRefresh": {
+    "support": true,
+    "color": "#333333",
+    "style": "circle",
+    "height": "20%",
+    "contentdown": {
+      "caption": "刷新数据"
+    },
+    "contentover": {
+      "caption": "释放刷新数据"
+    },
+    "contentrefresh": {
+      "caption": "正在刷新"
+    }
+  }
 }

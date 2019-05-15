@@ -1,0 +1,16 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "预约信息",
+  "bounce": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "提交",
+        "fontSize": "16",
+        "float": "right",
+        "color": "#333333",
+        "width": "55px"
+      }
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 const remoteUrls = {
-	PRODUCT_BASE_URL: 'http://111.230.253.60:8080/healthcare',
+	PRODUCT_BASE_URL: 'http://111.230.253.60:8089',
 	DEVELOP_BASE_URL: 'http://192.168.43.135:8089'
 };
-const currentBaseUrl = remoteUrls.DEVELOP_BASE_URL;
+const currentBaseUrl = remoteUrls.PRODUCT_BASE_URL;
 const constants = {
 	AUTHORIZATION_KEY: 'HOSPITAL_AUTHORIZATION',
 	REMOTE_URL: currentBaseUrl,

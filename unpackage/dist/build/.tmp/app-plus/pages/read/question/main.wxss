@@ -1,24 +1,24 @@
 
-.title.data-v-c9606e0a {
+.title.data-v-4b43a2ca {
   font-size: 32rpx;
   overflow: hidden;
   text-align: center;
   padding: .8em;
   font-weight: bold;
 }
-.asker.data-v-c9606e0a, .answerer.data-v-c9606e0a {
+.asker.data-v-4b43a2ca, .answerer.data-v-4b43a2ca {
   font-size: 30rpx;
   padding-left: 1em;
   height: 60rpx;
 }
-.divider.data-v-c9606e0a {
+.divider.data-v-4b43a2ca {
   width: 90%;
   margin: 15rpx auto;
   position: relative;
   height: 2rpx;
   background-color: #b4b4b4;
 }
-.divider.data-v-c9606e0a::before {
+.divider.data-v-4b43a2ca::before {
   content: '';
   width: 50rpx;
   height: 2rpx;
@@ -27,7 +27,7 @@
   top: 0;
   left: calc(50% - 25rpx);
 }
-.divider.data-v-c9606e0a::after {
+.divider.data-v-4b43a2ca::after {
   content: '';
   display: block;
   width: 10rpx;

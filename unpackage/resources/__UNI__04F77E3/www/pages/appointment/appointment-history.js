@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"border-red.",[1],"data-v-ed1acdd4 { border: ",[0,1]," solid #e54d42; }\n.",[1],"border-cyan.",[1],"data-v-ed1acdd4 { border: ",[0,1]," solid #1cbbb4; }\n.",[1],"border-grey.",[1],"data-v-ed1acdd4 { border: ",[0,1]," solid #8799a3; }\n",],undefined,{path:"./pages/appointment/appointment-history.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/appointment/appointment-history.wxml') } }));

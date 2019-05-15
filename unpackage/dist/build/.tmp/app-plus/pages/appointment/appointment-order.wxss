@@ -1,0 +1,111 @@
+
+.doctor-wrap.data-v-49f0bb78 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 160rpx;
+	padding: 40rpx 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	background-color: #FFFFFF;
+	border-bottom: 1rpx solid #EEEEEE;
+}
+.cu-avatar.data-v-49f0bb78 {
+	width: 80rpx;
+	height: 80rpx;
+}
+.title.data-v-49f0bb78{
+	height: 80rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 18rpx 20rpx;
+	/* background-color: #007AFF; */
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-left: 0rpx;
+}
+.doctor-depart.data-v-49f0bb78 {
+	font-weight: 600;
+	font-size: 30rpx;
+	color: #333333;
+}
+.doctor-name.data-v-49f0bb78 {
+	margin-left: 20rpx;
+	font-weight: 600;
+	font-size: 30rpx;
+	color: #333333;
+}
+.doctor-tip.data-v-49f0bb78 {
+	margin-left: 20rpx;
+	padding-top: 2rpx;
+	font-weight: 500;
+	font-size: 26rpx;
+	color: #8799a3;
+}
+.info-wrap.data-v-49f0bb78 {
+	padding: 20rpx 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	background-color: #FFFFFF;
+	border-bottom: 1rpx solid #EEEEEE;
+}
+.row.data-v-49f0bb78 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 70rpx;
+	line-height: 70rpx;
+	/* background-color: #007AFF; */
+}
+.info-left.data-v-49f0bb78 {
+	color: #8799a3;
+	font-size: 24rpx;
+	width: 150rpx;
+}
+.info-right.data-v-49f0bb78 {
+	color: #8799a3;
+	font-size: 26rpx;
+	text-align: right;
+}
+.detail-wrap.data-v-49f0bb78 {
+	background-color: #FFFFFF;
+	border-bottom: 1rpx solid #EEEEEE;
+	margin-bottom: 50rpx;
+	border-bottom: 1rpx solid #EEEEEE;
+	border-top: 1rpx solid #EEEEEE;
+}
+.detail-row.data-v-49f0bb78 {
+	padding-left: 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 80rpx;
+	line-height: 80rpx;
+	border-bottom: 1rpx solid #EEEEEE;
+}
+.detail-left.data-v-49f0bb78 {
+	color: #8799a3;
+	font-size: 24rpx;
+	width: 30%;
+}
+.detail-right.data-v-49f0bb78 {
+	color: #8799a3;
+	width: 70%;
+	font-size: 26rpx;
+	text-align: right;
+	padding-right: 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.sickInput.data-v-49f0bb78{
+	margin-top: 15rpx;
+	height: 50rpx;
+}
+

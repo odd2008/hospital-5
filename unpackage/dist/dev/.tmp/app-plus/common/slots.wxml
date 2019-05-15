@@ -1,8 +1,8 @@
-<import src="/common/slots.wxml" />
+<import src="/pages/home/weather.vue.wxml" />
 <import src="/components/readList.vue.wxml" />
 <import src="/components/questionList.vue.wxml" />
-<import src="/pages/home/weather.vue.wxml" />
 <import src="/components/movieItem.vue.wxml" />
+<import src="/common/slots.wxml" />
 <import src="/components/article.vue.wxml" />
 <import src="/components/mpvue-wxparse/wxParse.vue.wxml" />
 <import src="/components/mpvue-wxparse/components/wxParseTemplate0.vue.wxml" />

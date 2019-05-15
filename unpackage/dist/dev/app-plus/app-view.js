@@ -3965,7 +3965,7 @@ __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./colorui/components/cu-custom.vue.wxml','/common/slots.wxml','./common/slots.wxml','/components/readList.vue.wxml','/components/questionList.vue.wxml','/pages/home/weather.vue.wxml','/components/movieItem.vue.wxml','/components/article.vue.wxml','/components/mpvue-wxparse/wxParse.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate0.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate1.vue.wxml','/components/mpvue-wxparse/components/wxParseVideo.vue.wxml','/components/mpvue-wxparse/components/wxParseImg.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate2.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate3.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate4.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate5.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate6.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate7.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate8.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate9.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate10.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate11.vue.wxml','./components/article.vue.wxml','./components/movieItem.vue.wxml','./components/mpvue-wxparse/components/wxParseImg.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate0.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate1.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate10.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate11.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate2.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate3.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate4.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate5.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate6.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate7.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate8.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate9.vue.wxml','./components/mpvue-wxparse/components/wxParseVideo.vue.wxml','./components/mpvue-wxparse/wxParse.vue.wxml','./components/questionList.vue.wxml','./components/readList.vue.wxml','./pages/appointment/appointment-doctor.vue.wxml','./pages/appointment/appointment-doctor.wxml','./appointment-doctor.vue.wxml','./pages/appointment/appointment-history.vue.wxml','./pages/appointment/appointment-history.wxml','./appointment-history.vue.wxml','./pages/appointment/appointment-order.vue.wxml','./pages/appointment/appointment-order.wxml','./appointment-order.vue.wxml','./pages/appointment/appointment.vue.wxml','./pages/appointment/appointment.wxml','./appointment.vue.wxml','./pages/appointment/comment-detail.vue.wxml','./pages/appointment/comment-detail.wxml','./comment-detail.vue.wxml','./pages/appointment/comment.vue.wxml','./pages/appointment/comment.wxml','./comment.vue.wxml','./pages/appointment/doctor-detail.vue.wxml','./pages/appointment/doctor-detail.wxml','./doctor-detail.vue.wxml','./pages/daily/detail/main.vue.wxml','./pages/daily/detail/main.wxml','./main.vue.wxml','./pages/daily/main.vue.wxml','./pages/daily/main.wxml','./pages/healthdoc/healthdoc-edit.vue.wxml','./pages/healthdoc/healthdoc-edit.wxml','./healthdoc-edit.vue.wxml','./pages/healthdoc/healthdoc.vue.wxml','./pages/healthdoc/healthdoc.wxml','./healthdoc.vue.wxml','./pages/home/main.vue.wxml','./pages/home/main.wxml','./pages/home/weather.vue.wxml','./pages/login/forget.vue.wxml','./pages/login/forget.wxml','./forget.vue.wxml','./pages/login/login.vue.wxml','./pages/login/login.wxml','./login.vue.wxml','./pages/login/reg.vue.wxml','./pages/login/reg.wxml','./reg.vue.wxml','./pages/movie/detail/main.vue.wxml','./pages/movie/detail/main.wxml','./pages/movie/main.vue.wxml','./pages/movie/main.wxml','./pages/read/essay/main.vue.wxml','./pages/read/essay/main.wxml','./pages/read/main.vue.wxml','./pages/read/main.wxml','./pages/read/question/main.vue.wxml','./pages/read/question/main.wxml','./pages/user-center/user-center.vue.wxml','./pages/user-center/user-center.wxml','./user-center.vue.wxml','./pages/user-info/user-about.vue.wxml','./pages/user-info/user-about.wxml','./user-about.vue.wxml','./pages/user-info/user-account.vue.wxml','./pages/user-info/user-account.wxml','./user-account.vue.wxml','./pages/user-info/user-basic-info.vue.wxml','./pages/user-info/user-basic-info.wxml','./user-basic-info.vue.wxml','./pages/user-info/user-feedback.vue.wxml','./pages/user-info/user-feedback.wxml','./user-feedback.vue.wxml','./pages/user-info/user-secret.vue.wxml','./pages/user-info/user-secret.wxml','./user-secret.vue.wxml'];d_[x[0]]={}
+var x=['./colorui/components/cu-custom.vue.wxml','/common/slots.wxml','./common/slots.wxml','/pages/home/weather.vue.wxml','/components/readList.vue.wxml','/components/questionList.vue.wxml','/components/movieItem.vue.wxml','/components/article.vue.wxml','/components/mpvue-wxparse/wxParse.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate0.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate1.vue.wxml','/components/mpvue-wxparse/components/wxParseVideo.vue.wxml','/components/mpvue-wxparse/components/wxParseImg.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate2.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate3.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate4.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate5.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate6.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate7.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate8.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate9.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate10.vue.wxml','/components/mpvue-wxparse/components/wxParseTemplate11.vue.wxml','./components/article.vue.wxml','./components/movieItem.vue.wxml','./components/mpvue-wxparse/components/wxParseImg.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate0.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate1.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate10.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate11.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate2.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate3.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate4.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate5.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate6.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate7.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate8.vue.wxml','./components/mpvue-wxparse/components/wxParseTemplate9.vue.wxml','./components/mpvue-wxparse/components/wxParseVideo.vue.wxml','./components/mpvue-wxparse/wxParse.vue.wxml','./components/questionList.vue.wxml','./components/readList.vue.wxml','./pages/appointment/appointment-doctor.vue.wxml','./pages/appointment/appointment-doctor.wxml','./appointment-doctor.vue.wxml','./pages/appointment/appointment-history.vue.wxml','./pages/appointment/appointment-history.wxml','./appointment-history.vue.wxml','./pages/appointment/appointment-order.vue.wxml','./pages/appointment/appointment-order.wxml','./appointment-order.vue.wxml','./pages/appointment/appointment.vue.wxml','./pages/appointment/appointment.wxml','./appointment.vue.wxml','./pages/appointment/comment-detail.vue.wxml','./pages/appointment/comment-detail.wxml','./comment-detail.vue.wxml','./pages/appointment/comment.vue.wxml','./pages/appointment/comment.wxml','./comment.vue.wxml','./pages/appointment/doctor-detail.vue.wxml','./pages/appointment/doctor-detail.wxml','./doctor-detail.vue.wxml','./pages/daily/detail/main.vue.wxml','./pages/daily/detail/main.wxml','./main.vue.wxml','./pages/daily/main.vue.wxml','./pages/daily/main.wxml','./pages/healthdoc/healthdoc-edit.vue.wxml','./pages/healthdoc/healthdoc-edit.wxml','./healthdoc-edit.vue.wxml','./pages/healthdoc/healthdoc.vue.wxml','./pages/healthdoc/healthdoc.wxml','./healthdoc.vue.wxml','./pages/home/main.vue.wxml','./pages/home/main.wxml','./pages/home/weather.vue.wxml','./pages/login/forget.vue.wxml','./pages/login/forget.wxml','./forget.vue.wxml','./pages/login/login.vue.wxml','./pages/login/login.wxml','./login.vue.wxml','./pages/login/reg.vue.wxml','./pages/login/reg.wxml','./reg.vue.wxml','./pages/movie/detail/main.vue.wxml','./pages/movie/detail/main.wxml','./pages/movie/main.vue.wxml','./pages/movie/main.wxml','./pages/read/essay/main.vue.wxml','./pages/read/essay/main.wxml','./pages/read/main.vue.wxml','./pages/read/main.wxml','./pages/read/question/main.vue.wxml','./pages/read/question/main.wxml','./pages/user-center/user-center.vue.wxml','./pages/user-center/user-center.wxml','./user-center.vue.wxml','./pages/user-info/user-about.vue.wxml','./pages/user-info/user-about.wxml','./user-about.vue.wxml','./pages/user-info/user-account.vue.wxml','./pages/user-info/user-account.wxml','./user-account.vue.wxml','./pages/user-info/user-basic-info.vue.wxml','./pages/user-info/user-basic-info.wxml','./user-basic-info.vue.wxml','./pages/user-info/user-feedback.vue.wxml','./pages/user-info/user-feedback.wxml','./user-feedback.vue.wxml','./pages/user-info/user-secret.vue.wxml','./pages/user-info/user-secret.wxml','./user-secret.vue.wxml'];d_[x[0]]={}
 d_[x[0]]["2150f734"]=function(e,s,r,gg){
 var z=gz$gwx_1()
 var b=x[0]+':2150f734'
@@ -4113,11 +4113,11 @@ d_[x[2]]={}
 var m1=function(e,s,r,gg){
 var z=gz$gwx_2()
 var oD=e_[x[2]].i
-_ai(oD,x[1],e_,x[2],1,1)
-_ai(oD,x[3],e_,x[2],2,2)
-_ai(oD,x[4],e_,x[2],3,2)
-_ai(oD,x[5],e_,x[2],4,2)
-_ai(oD,x[6],e_,x[2],5,2)
+_ai(oD,x[3],e_,x[2],1,1)
+_ai(oD,x[4],e_,x[2],2,2)
+_ai(oD,x[5],e_,x[2],3,2)
+_ai(oD,x[6],e_,x[2],4,2)
+_ai(oD,x[1],e_,x[2],5,2)
 _ai(oD,x[7],e_,x[2],6,2)
 _ai(oD,x[8],e_,x[2],7,2)
 _ai(oD,x[9],e_,x[2],8,2)
@@ -4157,7 +4157,7 @@ oD.pop()
 oD.pop()
 return r
 }
-e_[x[2]]={f:m1,j:[],i:[],ti:[x[1],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[10],x[11],x[12],x[13],x[14],x[15],x[16],x[17],x[18],x[19],x[20],x[21],x[22]],ic:[]}
+e_[x[2]]={f:m1,j:[],i:[],ti:[x[3],x[4],x[5],x[6],x[1],x[7],x[8],x[9],x[10],x[11],x[12],x[13],x[14],x[15],x[16],x[17],x[18],x[19],x[20],x[21],x[22]],ic:[]}
 d_[x[23]]={}
 d_[x[23]]["724be450"]=function(e,s,r,gg){
 var z=gz$gwx_3()
@@ -10509,11 +10509,11 @@ return r
 var m43=function(e,s,r,gg){
 var z=gz$gwx_44()
 var fID=e_[x[74]].i
-_ai(fID,x[5],e_,x[74],1,1)
+_ai(fID,x[3],e_,x[74],1,1)
 fID.pop()
 return r
 }
-e_[x[74]]={f:m43,j:[],i:[],ti:[x[5]],ic:[]}
+e_[x[74]]={f:m43,j:[],i:[],ti:[x[3]],ic:[]}
 d_[x[75]]={}
 var m44=function(e,s,r,gg){
 var z=gz$gwx_45()
@@ -11347,13 +11347,13 @@ return r
 var m58=function(e,s,r,gg){
 var z=gz$gwx_59()
 var x1E=e_[x[92]].i
-_ai(x1E,x[3],e_,x[92],1,1)
-_ai(x1E,x[4],e_,x[92],1,47)
+_ai(x1E,x[4],e_,x[92],1,1)
+_ai(x1E,x[5],e_,x[92],1,47)
 x1E.pop()
 x1E.pop()
 return r
 }
-e_[x[92]]={f:m58,j:[],i:[],ti:[x[3],x[4]],ic:[]}
+e_[x[92]]={f:m58,j:[],i:[],ti:[x[4],x[5]],ic:[]}
 d_[x[93]]={}
 var m59=function(e,s,r,gg){
 var z=gz$gwx_60()
