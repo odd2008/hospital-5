@@ -1,5 +1,5 @@
-<import src="/pages/home/weather.vue.wxml" />
 <import src="/common/slots.wxml" />
+<import src="/pages/home/weather.vue.wxml" />
 <import src="/components/readList.vue.wxml" />
 <import src="/components/questionList.vue.wxml" />
 <import src="/components/movieItem.vue.wxml" />

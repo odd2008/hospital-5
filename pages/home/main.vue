@@ -44,29 +44,29 @@
 		</view>
 		
 		<view class="cu-list menu-avatar" style="margin-bottom: 50upx;">
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index" @click="goDetail(info)">
+				<view class="cu-avatar round lg" :style='"background-image:url("+info.headImageUrl+");"'></view>
 				<view class="content">
 					<view class="text-black">
-						<text style="width: 100upx;">{{info.name}}</text>
-						<text class="cu-tag round sm bg-orange">{{info.position}}</text>
+						<text>{{info.name}}</text>
+						<text class="cu-tag round sm bg-orange" style="margin-left: 30upx;">{{info.position}}</text>
 					</view>
 					<view class="flex">
-						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
+						<view class="text-grey text-sm" style="color: #fbbd08;">
 							评分：{{info.rate}}
 						</view>
-						<view class="text-grey text-sm">
+						<view class="text-grey text-sm" style="margin-left: 30upx;">
 							预约量：{{info.appointNum}}
 						</view>
 					</view>
 					<view class="text-gray text-sm flex">
-						<text class="text-cut">
+						<text class="text-cut" style="">
 							{{info.skills}}
 						</text> 
 					</view>
 				</view>
-				<view class="action">
-					<text class="text-gray text-sm">{{info.department}}</text>
+				<view class="action text-gray text-cut" style="width: 150upx; text-align: right;box-sizing: border-box;padding-right: 10upx;">
+					<text class="text-sm">{{info.department}}</text>
 				</view>
 			</view>
 		</view>
@@ -142,6 +142,11 @@ export default {
 					});
 				}
 			}
+		});
+	},
+	goDetail(doctor) {
+		uni.navigateTo({
+			url: `/pages/appointment/doctor-detail?name=${doctor.name}&position=${doctor.position}&id=${doctor.id}`
 		});
 	},
 	loadData() {

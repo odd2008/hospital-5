@@ -21,8 +21,8 @@
 				</view>
 			</view>
 			<view >
-				<view class="uer-name" style="font-size: 25upx; line-height: 30upx; margin-top: 20upx;">
-					简介：擅长冠心病介入诊断与治疗，在疑难、危重心脏病的诊治方面具有丰富的临床经验。
+				<view class="uer-name" style="font-size: 25upx; line-height: 30upx; margin-top: 30upx;">
+					简介：{{doctorInfo.skills}}
 				</view>
 			</view>
 		</view>
@@ -89,29 +89,29 @@
 		</view>
 		
 		<view class="cu-list menu-avatar" style="margin-bottom: 50upx;">
-			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+			<view class="cu-item" style="height: 200upx; border-bottom: 1upx solid #eee;"  v-for="(info,index) in recommendInfo" :key="index" @click="goDetail(info)">
+				<view class="cu-avatar round lg" :style='"background-image:url("+info.headImageUrl+");"'></view>
 				<view class="content">
 					<view class="text-black">
-						<text style="width: 100upx;">{{info.name}}</text>
-						<text class="cu-tag round sm bg-orange">{{info.position}}</text>
+						<text>{{info.name}}</text>
+						<text class="cu-tag round sm bg-orange" style="margin-left: 30upx;">{{info.position}}</text>
 					</view>
 					<view class="flex">
-						<view class="text-grey text-sm" style="width: 200upx;color: #fbbd08;">
+						<view class="text-grey text-sm" style="color: #fbbd08;">
 							评分：{{info.rate}}
 						</view>
-						<view class="text-grey text-sm">
+						<view class="text-grey text-sm" style="margin-left: 30upx;">
 							预约量：{{info.appointNum}}
 						</view>
 					</view>
 					<view class="text-gray text-sm flex">
-						<text class="text-cut">
+						<text class="text-cut" style="">
 							{{info.skills}}
 						</text> 
 					</view>
 				</view>
-				<view class="action">
-					<text class="text-gray text-sm">{{info.department}}</text>
+				<view class="action text-gray text-cut" style="width: 150upx; text-align: right;box-sizing: border-box;padding-right: 10upx;">
+					<text class="text-sm">{{info.department}}</text>
 				</view>
 			</view>
 		</view>
@@ -134,7 +134,8 @@
 					position: '',
 					appointNum: 0,
 					rate: 0,
-					id: 0
+					id: 0,
+					skills: ''
 				},
 				publicPath: this.$constants.IMAGE_PUBLIC_PATH,
 				recommendInfo: [],
@@ -160,6 +161,11 @@
 			goCommentDetail() {
 				uni.navigateTo({
 					url: `comment-detail?targetId=${this.doctorInfo.id}&targetType=1`
+				});
+			},
+			goDetail(doctor) {
+				uni.navigateTo({
+					url: `/pages/appointment/doctor-detail?name=${doctor.name}&position=${doctor.position}&id=${doctor.id}`
 				});
 			},
 			appointFull() {
@@ -309,7 +315,7 @@
 	
 	.logo {
 		width: 750upx;
-		height: 300upx;
+		height: 350upx;
 		padding: 20upx;
 		padding-left: 40upx;
 		padding-top: 60upx;

@@ -149,8 +149,8 @@
 			chooseImage() {
 				uni.chooseImage({
 					count: 1, //默认9
-					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album'], //从相册选择
+					sizeType: ['original'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album', 'camera'], //从相册选择
 					success: (res) => {
 						this.headPhoto = res.tempFilePaths[0];
 						console.log(this.headPhoto);
@@ -167,9 +167,14 @@
 				});
 			},
 			viewImage(e) {
+				// uni.showToast({
+				// 	title: e.currentTarget.dataset.url,
+				// 	icon: 'none',
+				// 	duration: 10000
+				// });
 				uni.previewImage({
 					urls: [this.headPhoto],
-					current: e.currentTarget.dataset.url
+					current: this.headPhoto
 				});
 			}
 		},

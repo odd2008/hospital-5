@@ -1,21 +1,21 @@
 
-.page.data-v-7604872f {
+.page.data-v-6c66fbff {
 	height: 100Vh;
 	width: 100vw;
 }
-.page.show.data-v-7604872f {
+.page.show.data-v-6c66fbff {
 	overflow: hidden;
 }
-.switch-sex.data-v-7604872f::after {
+.switch-sex.data-v-6c66fbff::after {
 	content: "\E716";
 }
-.switch-sex.data-v-7604872f::before {
+.switch-sex.data-v-6c66fbff::before {
 	content: "\E7A9";
 }
-.switch-music.data-v-7604872f::after {
+.switch-music.data-v-6c66fbff::after {
 	content: "\E66A";
 }
-.switch-music.data-v-7604872f::before {
+.switch-music.data-v-6c66fbff::before {
 	content: "\E6DB";
 }
 

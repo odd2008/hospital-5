@@ -50,16 +50,17 @@
 				title: '加载中...',
 				mask: true
 			});
-			uni.getStorage({
-				key: DEPART_KEY,
-				success: (res) => {
-					this.list = res.data;
-					this.listCur = this.list[0];
-				},
-				fail: () => {
-					this.loadData();
-				}
-			});
+			this.loadData();
+			// uni.getStorage({
+			// 	key: DEPART_KEY,
+			// 	success: (res) => {
+			// 		this.list = res.data;
+			// 		this.listCur = this.list[0];
+			// 	},
+			// 	fail: () => {
+			// 		this.loadData();
+			// 	}
+			// });
 		},
 		onReady() {
 			uni.hideLoading();
@@ -115,13 +116,13 @@
 							let list = info.data;
 							this.list = list;
 							this.listCur = list[0];
-							uni.setStorage({
-								key: DEPART_KEY,
-								data: info.data,
-								success: function () {
-									console.log('缓存成功');
-								}
-							});
+							// uni.setStorage({
+							// 	key: DEPART_KEY,
+							// 	data: info.data,
+							// 	success: function () {
+							// 		console.log('缓存成功');
+							// 	}
+							// });
 						} else {
 							
 						}

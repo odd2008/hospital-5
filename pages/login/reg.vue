@@ -32,7 +32,7 @@
 		<view class="xieyi">
 			<image @tap="xieyitong" :src="xieyi==true?'/static/shilu-login/ty1.png':'/static/shilu-login/ty0.png'"></image>
 			<text @tap="xieyitong"> 同意</text>
-			<navigator url="blog?id=1" open-type="navigate">《软件用户协议》</navigator>
+			<navigator url="/pages/user-info/user-secret" open-type="navigate">《软件用户协议》</navigator>
 		</view>
 	</view>
 </template>
@@ -198,25 +198,18 @@
 					succeed: (info) => {
 						console.log(JSON.stringify(info));
 						if(info.status === 'success'){
-							uni.setStorage({
-								key: this.$constants.AUTHORIZATION_KEY,
-								data: info.data,
-								success: function () {
-									console.log('缓存成功');
-									//登录成功
-									uni.showToast({
-										title: '注册成功！',
-										duration: 1000
-									});
-									//跳转到主页
-									uni.switchTab({
-										url: '/pages/home/main'
-									});
-								}
+							//登录成功
+							uni.showToast({
+								title: '注册成功！',
+								duration: 1000
+							});
+							//跳转到主页
+							uni.reLaunch({
+								url: 'login'
 							});
 						} else {
 							uni.showToast({
-								title: info.errorMsg,
+								title: info.errMsg,
 								icon:'none',
 								duration: 2000
 							});

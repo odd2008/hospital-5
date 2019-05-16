@@ -77,6 +77,7 @@ let requestWithoutToken = (config) => {
 	if(config.header) {
 		header = config.header;
 	}
+	
 	console.log(method);
 	console.log(constants.REMOTE_URL + config.url);
 	uni.request({

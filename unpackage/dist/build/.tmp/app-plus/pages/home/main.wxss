@@ -38,26 +38,26 @@
 }
 
 
-.container.data-v-23defef0 {
+.container.data-v-2550ce1a {
 		font-size: 26rpx;
 		text-align: center;
 }
-.cover.data-v-23defef0 {
+.cover.data-v-2550ce1a {
     width: 100%;
 }
-.cover-author.data-v-23defef0 {
+.cover-author.data-v-2550ce1a {
     width: 100%;
     height: 100rpx;
     line-height: 100rpx;
     margin-bottom: 30rpx;
 }
-.content.data-v-23defef0 {
+.content.data-v-2550ce1a {
     width: 80%;
     margin: 0 auto;
     line-height: 58rpx;
     text-align: left;
 }
-.content-author.data-v-23defef0 {
+.content-author.data-v-2550ce1a {
     height: 100rpx;
     line-height: 100rpx;
 }
